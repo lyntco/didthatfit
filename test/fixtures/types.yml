@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: types
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  warmth      :integer
+#  category_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  warmth: 1
+  category_id: 1
+
+two:
+  name: MyString
+  warmth: 1
+  category_id: 1
