@@ -16,7 +16,7 @@ User.destroy_all
 me = User.create( username: 'lynt', password: 'admin123', password_confirmation: 'admin123', email: 'strawww@gmail.com', is_admin: true)
 friend1 = User.create( username: 'buddy', password: 'hahaha', password_confirmation: 'hahaha', email: 'strawww@gmail.com')
 
-# me.friends << friend1
+me.friends << friend1
 
 i1 = Item.create( name: 'Cheetah Jacket')
 i2 = Item.create( name: 'Jeans')

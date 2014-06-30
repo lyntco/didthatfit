@@ -21,5 +21,6 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   has_secure_password
   has_many :items
-  # has_and_belongs_to_many :friends, :class_name => "User", :foreign_key => "user_id"
+  has_many :friendships
+  has_many :friends, :through => :friendships
 end
