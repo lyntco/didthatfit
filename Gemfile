@@ -28,13 +28,14 @@ gem 'spring',        group: :development
 
 gem 'haml'
 gem 'bcrypt'
-gem 'geocoder'
-gem 'forecast_io'
+gem 'geocoder' #geolocation
+gem 'forecast_io' #weather
 
 gem 'carrierwave' #file upload
 gem 'mini_magick' #resize
 gem 'cloudinary' #cloud hosting
 
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'pry-rails'

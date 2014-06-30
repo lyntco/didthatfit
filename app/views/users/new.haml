@@ -1,3 +1,9 @@
 %h2 Sign up
 
 = render :partial => 'form'
+
+- if @user.errors.any?
+  %h1 ERROR
+  %ol
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
