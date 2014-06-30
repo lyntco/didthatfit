@@ -1,32 +1,15 @@
 class CategoriesController < ApplicationController
   def index
-  end
-
-  def create
-  end
-
-  def new
-  end
-
-  def edit
+    @categories = Category.all
   end
 
   def show
+    @category = Category.find params[:id]
   end
 
-  def update
-  end
-
-  def destroy
+  private
+  def category_params
+    params.require(:category).permit(:name)
   end
 
 end
-
-#    categories GET    /categories(.:format)          categories#index
-#               POST   /categories(.:format)          categories#create
-#  new_category GET    /categories/new(.:format)      categories#new
-# edit_category GET    /categories/:id/edit(.:format) categories#edit
-#      category GET    /categories/:id(.:format)      categories#show
-#               PATCH  /categories/:id(.:format)      categories#update
-#               PUT    /categories/:id(.:format)      categories#update
-#               DELETE /categories/:id(.:format)      categories#destroy

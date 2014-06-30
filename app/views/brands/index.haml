@@ -1,0 +1,7 @@
+%h2 All Brands
+
+- @brands.each do |brand|
+    %div
+    = link_to( brand.name, brand )
+    = link_to( 'Delete', brand, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+    = link_to( 'Edit', edit_brand_path(brand.id))

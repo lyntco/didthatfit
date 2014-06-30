@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dtfme</title>
+  <title>TunrApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
+  <ul>
+    <li><%= link_to('Home', '/') %> </li>
+    <%== smartnav %><%# == means dont mess with my html  %>
+  </ul>
+</nav>
+
+<% if flash[:notice].present? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <%= yield %>
 

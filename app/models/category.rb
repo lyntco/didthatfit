@@ -9,4 +9,6 @@
 #
 
 class Category < ActiveRecord::Base
+  has_many :types
+  has_many :items, :through => :types
 end

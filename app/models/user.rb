@@ -12,6 +12,7 @@
 #  email           :string(255)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  is_admin        :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -20,4 +21,5 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   has_secure_password
   has_many :items
+  # has_and_belongs_to_many :friends, :class_name => "User", :foreign_key => "user_id"
 end

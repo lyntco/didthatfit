@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629024324) do
+ActiveRecord::Schema.define(version: 20140630044514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20140629024324) do
     t.string   "fit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
+    t.integer  "user_id"
   end
 
   create_table "outfits", force: true do |t|
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140629024324) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_admin",        default: false
   end
 
 end
