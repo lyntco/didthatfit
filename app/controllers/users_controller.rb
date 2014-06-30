@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(:username => params[:id]).first
+    @user = @current_user unless params[:id].present?
   end
 
   def update

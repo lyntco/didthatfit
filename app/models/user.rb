@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :types, :through => :items
   has_many :categories, :through => :items
   has_many :brands, :through => :items
+  has_many :outfits
   has_many :friendships
   has_many :friends, :through => :friendships
 end

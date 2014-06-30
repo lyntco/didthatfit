@@ -9,3 +9,7 @@
 %h3 Items
 - @user.items.each do |item|
   %li= link_to( item.name, user_item_path(@user.username,item.id) )
+
+%h3 Outfits
+- @user.outfits.each do |outfit|
+  %li= link_to( outfit.name, user_outfit_path(@user.username,outfit.id) )
