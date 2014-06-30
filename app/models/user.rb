@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   has_secure_password
   has_many :items
+  has_many :types, :through => :items
+  has_many :categories, :through => :items
+  has_many :brands, :through => :items
   has_many :friendships
   has_many :friends, :through => :friendships
 end

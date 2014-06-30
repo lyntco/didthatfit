@@ -15,9 +15,10 @@
 #
 
 class Item < ActiveRecord::Base
+  mount_uploader :image, PhotoUploader
   belongs_to :user
   belongs_to :brand
   belongs_to :type
   belongs_to :category
-  # has_many_and_belongs_to :outfits
+  has_and_belongs_to_many :outfits
 end

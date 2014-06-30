@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630060316) do
+ActiveRecord::Schema.define(version: 20140630081514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(version: 20140630060316) do
     t.string   "image"
     t.integer  "user_id"
   end
+
+  create_table "items_outfits", id: false, force: true do |t|
+    t.integer "item_id",   null: false
+    t.integer "outfit_id", null: false
+  end
+
+  add_index "items_outfits", ["item_id", "outfit_id"], name: "index_items_outfits_on_item_id_and_outfit_id", using: :btree
+  add_index "items_outfits", ["outfit_id", "item_id"], name: "index_items_outfits_on_outfit_id_and_item_id", using: :btree
 
   create_table "outfits", force: true do |t|
     t.datetime "created_at"

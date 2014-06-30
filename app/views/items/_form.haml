@@ -4,6 +4,8 @@
 
   = f.label :image
   = f.text_field :image
+  = f.file_field :remote_image_url
+  = f.text_field :image_cache
 
   = f.label :size
   = f.text_field :size
@@ -15,6 +17,10 @@
   = f.text_field :brand_id
 
   = f.label :type_id
-  = f.text_field :type_id
+  = f.select(“item”, “type”, Item::TYPES, {include_blank: true})
+
+  %select
+    - Type.all.each do |type|
+      %option{:value => type.id, :selected => @item.type_id == type.id }= type.name
 
   = f.submit

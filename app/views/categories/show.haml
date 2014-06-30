@@ -1,2 +1,4 @@
 %h2= @category.name
 
+- @category.types.each do |type|
+    = type.name

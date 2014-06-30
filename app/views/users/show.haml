@@ -1,3 +1,11 @@
 %h2= @user.username
 
 = @user.name
+
+%h3 Friends
+- @user.friends.each do |friend|
+  = friend.username
+
+%h3 Items
+- @user.items.each do |item|
+  %li= item.name
