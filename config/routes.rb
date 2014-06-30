@@ -16,3 +16,4 @@ Rails.application.routes.draw do
     resources :outfits, :except => [:index]
   end
 end
+

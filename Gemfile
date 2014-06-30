@@ -35,7 +35,7 @@ gem 'carrierwave' #file upload
 gem 'mini_magick' #resize
 gem 'cloudinary' #cloud hosting
 
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 
 group :development do
   gem 'pry-rails'
