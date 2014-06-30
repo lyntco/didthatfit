@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :check_if_logged_in, :except => [:new, :create]
-  # before_action :check_if_admin, :only => [:index]
+  before_action :check_if_logged_in, :except => [:new, :create]
+  before_action :check_if_admin, :only => [:index]
 
   def index
     @users = User.all
@@ -31,7 +31,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(:username => params[:id]).first
-    @user = @current_user unless params[:id].present?
   end
 
   def update

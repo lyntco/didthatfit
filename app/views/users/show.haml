@@ -8,8 +8,16 @@
 
 %h3 Items
 - @user.items.each do |item|
-  %li= link_to( item.name, user_item_path(@user.username,item.id) )
+  = link_to( user_item_path(@user.username,item.id) ) do
+    %div.item
+      = image_tag(item.image)
+      <br>
+      = item.name
+
+= "No items of clothing yet!" if @user.items.empty?
 
 %h3 Outfits
 - @user.outfits.each do |outfit|
-  %li= link_to( outfit.name, user_outfit_path(@user.username,outfit.id) )
+  %li= link_to( outfit.id, user_outfit_path(@user.username,outfit.id) )
+
+= "No outfits yet!" if @user.outfits.empty?

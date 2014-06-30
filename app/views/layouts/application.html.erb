@@ -7,12 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
-  <ul>
-    <li><%= link_to('Home', '/') %> </li>
-    <%== smartnav %><%# == means dont mess with my html  %>
-  </ul>
-</nav>
+  <nav>
+    <ul>
+      <li><%= link_to('Home', '/') %> </li>
+      <%== smartnav %><%# == means dont mess with my html  %>
+    </ul>
+  </nav>
 
 <% if flash[:notice].present? %>
   <div class="notice">
