@@ -15,6 +15,7 @@
 %h3 Following
 - @user.friends.each do |friend|
   = link_to( friend.username, user_path( friend.username ))
+= "Not following anybody yet!" if @user.friends.empty?
 
 %h3 Items
 - @user.items.each do |item|

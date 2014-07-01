@@ -14,7 +14,7 @@ module ApplicationHelper
     end
     if @current_user.present?
       links += "<li>" + link_to('Settings', edit_user_path(@current_user.username)) + "</li>"
-      links += "<li>" + link_to('What should I wear today?', new_outfit_path) + "</li>"
+      # links += "<li>" + link_to('What should I wear today?', new_outfit_path) + "</li>"
       links += "<li> #{ link_to("Logout #{ @current_user.username }", login_path, :method => :delete, :data => { :confirm => "Are you sure you want to logout?" })  }</li>"
     else
       links += "<li> #{ link_to('Sign up', new_user_path) } </li>

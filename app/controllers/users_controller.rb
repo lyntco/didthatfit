@@ -57,13 +57,13 @@ class UsersController < ApplicationController
   def follow
     user_to_add = User.where(:username => params[:id]).first
     @current_user.friends << user_to_add
-    redirect_to( user_path(@user_to_add.username) )
+    redirect_to( user_path( user_to_add.username) )
   end
 
   def unfollow
-    raise params.inspect
+    # raise params.inspect
     user_to_remove = User.where(:username => params[:id]).first
-    @current_user.friends.find(@user_to_remove.id)
+    @current_user.friendships.where( :friend_id => user_to_remove.id ).first.destroy
     redirect_to( user_path( user_to_remove.username) )
   end
 
