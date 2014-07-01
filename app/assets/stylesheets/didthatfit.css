@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Exo+2:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800italic,800,900,900italic);
+
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+html, body {
+  font-family: 'Exo 2', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+  text-align:center;
+  background: red;
+}
+
+nav ul {
+  list-style: none;
+  margin: auto;
+}
+
+nav ul li {
+  display: inline-block;
+  padding-top: 2em;
+}
+
+nav ul li a {
+  padding:1em;
+  background: #bf0000;
+}
+
+#wrap {
+  max-width: 960px;
+  margin: auto;
+}
