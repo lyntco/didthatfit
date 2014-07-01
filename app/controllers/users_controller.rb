@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     # raise params.inspect
     @user.username = @user.username.downcase # forces downcase username
-    @user.avatar = "/assets/images/default_icon.jpg" #gives user default icon
+    @user.avatar = "default_icon.jpg" #gives user default icon
     if @user.save
       session[:user_id] = @user.id
       redirect_to( root_path )
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(:username => params[:id]).first
+    @followers = Friendship.where(:friend_id => @user.id)
   end
 
   def update
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
       redirect_to( users_path )
     else
       flash[:notice] = "Your current password didn't match. Please try again"
-      render :edit
+      redirect_to( edit_user_path(@current_user.username) )
     end
 
   end
@@ -63,7 +64,8 @@ class UsersController < ApplicationController
   def unfollow
     # raise params.inspect
     user_to_remove = User.where(:username => params[:id]).first
-    @current_user.friendships.where( :friend_id => user_to_remove.id ).first.destroy
+    friendship = @current_user.friendships.where( :friend_id => user_to_remove.id ).first
+    friendship.destroy
     redirect_to( user_path( user_to_remove.username) )
   end
 
