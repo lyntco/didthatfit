@@ -10,14 +10,14 @@ Rails.application.routes.draw do
   resources :brands
   resources :users, :only => [:index]
   resources :items
+  resources :outfits
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/login' => 'sessions#destroy'
 
-  resources :users, :path => '/' do
+  resources :users, :path => '/u' do
     resources :items, :except => [:index,:new,:edit]
-    resources :outfits, :except => [:index]
+    resources :outfits, :except => [:index,:new,:edit]
   end
 end
-

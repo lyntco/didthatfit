@@ -1,6 +1,8 @@
 %h2= @user.username
 = image_tag( @user.avatar_url(:avatar) )
-= @user.name.to_s + "lol"
+%p
+= @user.name
+%p
 = @user.email
 
 %h3 Friends

@@ -1,4 +1,5 @@
-= form_for @user, :url => "/#{@user.username}" do |f|
+= form_for @user, :url => @user.id ? "/u/#{@user.username}" : "/u" do |f|
+
   - unless @current_user.present?
     %p
     = f.label :username

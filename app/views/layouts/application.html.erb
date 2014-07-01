@@ -15,13 +15,13 @@
   </nav>
 
   <div id="wrap">
-      <% if flash[:notice].present? %>
+
+    <%= yield %>
+    <% if flash[:notice].present? %>
         <div class="notice">
           <%= flash[:notice] %>
         </div>
       <% end %>
-
-    <%= yield %>
   </div>
 </body>
 </html>
