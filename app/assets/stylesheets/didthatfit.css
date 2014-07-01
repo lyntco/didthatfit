@@ -13,6 +13,10 @@ html, body {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Quicksand', sans-serif;
+}
+
 a {
   text-decoration: none;
 }
@@ -41,4 +45,10 @@ nav ul li a {
 #wrap {
   max-width: 960px;
   margin: auto;
+}
+
+.item {
+  display: inline-block;
+  padding: .5em;
+  background: #00af00;
 }

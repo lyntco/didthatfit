@@ -1,6 +1,6 @@
 %h2= @user.username
-
 = @user.name
+= @user.email
 
 %h3 Friends
 - @user.friends.each do |friend|
@@ -10,7 +10,7 @@
 - @user.items.each do |item|
   = link_to( user_item_path(@user.username,item.id) ) do
     %div.item
-      = image_tag(item.image)
+      = image_tag( item.image_url(:thumb) )
       <br>
       = item.name
 

@@ -1,20 +1,33 @@
-= form_for @user do |f|
+= form_for @user, :url => "/#{@user.username}" do |f|
+  <p>
   = f.label :username
   = f.text_field :username
-
+  </p><p>
+  -# = image_tag( @user.avatar_url(:avatar) )
+  </p><p>
+  = f.label :avatar
+  = f.file_field :avatar
+  </p><p>
   = f.label :name
   = f.text_field :name
-
+  </p><p>
   = f.label :password
   = f.password_field :password
-
+  </p><p>
   = f.label :password_confirmation
   = f.password_field :password_confirmation
-
+  </p><p>
   = f.label :email
   = f.text_field :email
-
+  </p><p>
   = f.label :size
   = f.text_field :size
-
+  </p>
+  - if @current_user
+    <p>
+    Please enter your current password to save changes.
+    </p><p>
+    = f.label :current_password
+    = f.password_field :current_password
+    </p>
   = f.submit

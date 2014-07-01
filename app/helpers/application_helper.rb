@@ -3,6 +3,7 @@ module ApplicationHelper
     links = ''
     if @current_user.present?
       links += "<li>" + link_to('Home', user_path(@current_user.username)) + "</li>"
+      links += "<li>" + link_to('Add an item', new_item_path) + "</li>"
     else
       links += "<li>" + link_to('Home', root_path) + "</li>"
     end
@@ -12,6 +13,7 @@ module ApplicationHelper
       links += "<li>" + link_to('View brands', brands_path) + "</li>"
     end
     if @current_user.present?
+      links += "<li>" + link_to('Settings', edit_user_path(@current_user.username)) + "</li>"
       links += "<li> #{ link_to("Logout #{ @current_user.username }", login_path, :method => :delete, :data => { :confirm => "Are you sure you want to logout?" })  }</li>"
     else
       links += "<li> #{ link_to('Sign up', new_user_path) } </li>

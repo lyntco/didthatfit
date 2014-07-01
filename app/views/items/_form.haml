@@ -1,25 +1,28 @@
 = form_for @item do |f|
+  <p>
   = f.label :name
   = f.text_field :name
-
+  </p><p>
+  = image_tag( @item.image_url(:thumb) )
+  </p><p>
   = f.label :image
   = f.file_field :image
   - f.text_field :image_cache
-
+  </p><p>
   = f.label :size
   = f.text_field :size
-
-  = f.label :fit
-  = f.text_field :fit
-
+  </p><p>
+  = f.radio_button(:fit, "small")
+  = f.label(:fit_small, "Too small")
+  = f.radio_button(:fit, "right")
+  = f.label(:fit_right, "Just right")
+  = f.radio_button(:fit, "big")
+  = f.label(:fit_big, "Too big")
+  </p><p>
   = f.label :brand_id
   = f.text_field :brand_id
-
+  </p><p>
   = f.label :type_id
-  -# = f.select('item', 'type', Item::TYPES, {include_blank: true})
-
-  %select
-    - Type.all.each do |type|
-      %option{:value => type.id, :selected => @item.type_id == type.id }= type.name
-
+  = f.collection_select :type_id, Type.all, :id, :name
+  </p>
   = f.submit

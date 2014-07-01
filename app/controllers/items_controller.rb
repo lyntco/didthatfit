@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @user = User.where(:username => @current_user.username)
     @item = Item.new item_params
     # raise params.inspect
     if @item.save
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:type_id,:brand_id,:size,:fit, :image, :image_cache)
+    params.require(:item).permit(:name,:type_id,:brand_id,:size,:fit, :image, :image_cache, :user_id => @current_user.id)
   end
 
 end

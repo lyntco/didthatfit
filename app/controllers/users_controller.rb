@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id]
+    @user = User.where(:username => params[:id]).first
   end
 
   def show
@@ -34,9 +34,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find params[:id]
-    @user.update user_params
-    redirect_to( users_path )
+    # raise params.inspect
+    @user = User.where(:username => params[:user][:username]).first
+    if @current_user.authenticate(params[:user][:current_password])
+      @user.update user_params
+      redirect_to( users_path )
+    else
+      flash[:notice] = "Your current password didn't match. Please try again"
+      render :edit
+    end
+
   end
 
   def destroy
