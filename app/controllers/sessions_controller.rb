@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
 
   def create
     # raise params.inspect
-    # user = User.where(:username => params[:username]) # dont need to nest params because the form tag doesnt nest for a login
     user = User.find_by(:username => params[:username])
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id # session is a private hash rails uses

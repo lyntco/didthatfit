@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :check_if_logged_in, :except => [:new, :create]
   before_action :check_if_admin, :only => [:index]
+  before_action :skip_password_attribute, only: :update
 
   def index
     @users = User.all
@@ -34,15 +35,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    # raise params.inspect
-    @user = User.where(:username => params[:user][:username]).first
-    if @current_user.authenticate(params[:user][:current_password])
+    # unless @current_user.is_admin? && params[:id] == 'edit'
+      @user = User.where(:username => params[:id]).first
+    # else
+      # @user = @current_user
+    # end
+    # if @current_user.authenticate(params[:user][:current_password])
+      # raise params.inspect
       @user.update user_params
       redirect_to( users_path )
-    else
-      flash[:notice] = "Your current password didn't match. Please try again"
-      render :edit
-    end
+    # else
+      # flash[:notice] = "Your current password didn't match. Please try again"
+      # render :edit
+    # end
 
   end
 
@@ -54,7 +59,13 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :name, :size, :email)
+    params.require(:user).permit(:username, :name, :avatar, :avatar_cache, :password, :password_confirmation, :size, :email)
+  end
+
+  def skip_password_attribute
+    if params[:user][:password].blank? && params[:user][:password_validation].blank?
+      params.except!(:password, :password_validation)
+    end
   end
 
 end

@@ -19,6 +19,7 @@ module ApplicationHelper
       links += "<li> #{ link_to('Sign up', new_user_path) } </li>
       <li> #{ link_to('Sign in', login_path ) } </li>"
     end
+    links += "<li>" + search_field_tag("search") + "</li>"
 
     links
   end

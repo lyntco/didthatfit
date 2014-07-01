@@ -6,10 +6,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @user = User.where(:username => @current_user.username)
+    @user = User.where(:username => @current_user.username).first
     @item = Item.new item_params
     # raise params.inspect
     if @item.save
+      # raise params.inspect
+      @user.items << @item
       redirect_to( items_path )
     else
       render :new

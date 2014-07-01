@@ -1,12 +1,13 @@
 = form_for @brand do |f|
-  <p>
+  %p
   = f.label :name
   = f.text_field :name
-  </p><p>
+  %p
   = f.label :image
-  = f.text_field :image
-  </p><p>
+  = f.file_field :image
+  -# - f.text_field :image_cache
+  %p
   = f.label :website
   = f.text_field :website
-  </p>
+  %p
   = f.submit

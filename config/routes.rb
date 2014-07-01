@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root :to => 'brands#index'
+  # if @current_user.present?
+    # root :to => 'users#show'
+  # else
+    root :to => 'brands#index'
+  # end
   # resources :categories, :only => [:index,:show] do
   #   resources :types, :only => [:index,:show]
   # end
