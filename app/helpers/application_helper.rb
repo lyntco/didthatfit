@@ -10,7 +10,6 @@ module ApplicationHelper
       links += "<li>" + link_to('View users', users_path) + "</li>"
       links += "<li>" + link_to('View items', items_path) + "</li>"
       links += "<li>" + link_to('View brands', brands_path) + "</li>"
-      links += "<li>" + link_to('View categories', categories_path) + "</li>"
     end
     if @current_user.present?
       links += "<li> #{ link_to("Logout #{ @current_user.username }", login_path, :method => :delete, :data => { :confirm => "Are you sure you want to logout?" })  }</li>"
