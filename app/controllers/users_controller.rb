@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :check_if_logged_in, :except => [:new, :create]
-  before_action :check_if_admin, :only => [:index]
+  # before_action :check_if_admin, :only => [:index]
 
   def index
     @users = User.all
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.where(:username => params[:id]).first
-    if params[:id] != @current_user.username
+    if params[:id] != @current_user.username && @current_user.is_admin? == false
       redirect_to( edit_user_path(@current_user.username) )
     end
   end
@@ -49,9 +49,22 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find params[:id]
+    user = User.where(:username => params[:id]).first
     user.destroy
     redirect_to( users_path )
+  end
+
+  def follow
+    user_to_add = User.where(:username => params[:id]).first
+    @current_user.friends << user_to_add
+    redirect_to( user_path(@user_to_add.username) )
+  end
+
+  def unfollow
+    raise params.inspect
+    user_to_remove = User.where(:username => params[:id]).first
+    @current_user.friends.find(@user_to_remove.id)
+    redirect_to( user_path( user_to_remove.username) )
   end
 
   private

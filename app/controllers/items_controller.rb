@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :check_if_logged_in, :except => [:items]
+  before_action :check_if_logged_in, :except => [:items]
 
   def index
     @items = Item.all
@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
     @item = Item.new item_params
     # raise params.inspect
     if @item.save
-      # raise params.inspect
       @user.items << @item
       redirect_to( items_path )
     else
@@ -25,6 +24,11 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find params[:id]
+    if @current_user.items.include? @item
+      @item
+    else
+      redirect_to( user_path(@current_user.username) )
+    end
   end
 
   def show
@@ -45,24 +49,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit( :name, :image )
-  end
-
-  private
-  def item_params
-    params.require(:item).permit(:name,:type_id,:brand_id,:size,:fit, :image, :image_cache, :user_id => @current_user.id)
+    params.require(:item).permit(:name,:type_id,:brand_id,:size,:fit, :image, :image_cache, :user_id)
   end
 
 end
-
-# Table name: items
-#
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  type_id    :integer
-#  brand_id   :integer
-#  size       :string(255)
-#  fit        :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#

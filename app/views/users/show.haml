@@ -5,9 +5,16 @@
 %p
 = @user.email
 
-%h3 Friends
+- if @user != @current_user
+  - if @current_user.friends.include? @user
+    = link_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
+  - else
+    = link_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
+
+
+%h3 Following
 - @user.friends.each do |friend|
-  = friend.username
+  = link_to( friend.username, user_path( friend.username ))
 
 %h3 Items
 - @user.items.each do |item|

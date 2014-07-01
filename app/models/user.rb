@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :length => { :minimum => 6 }, :on => :create
   validates :email, :presence => true, :uniqueness => true
   has_secure_password
-  has_many :items
+  has_many :items, :dependent => :destroy
   has_many :types, :through => :items
   has_many :categories, :through => :items
   has_many :brands, :through => :items
