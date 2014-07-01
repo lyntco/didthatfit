@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root :to => 'brands#index'
-  resources :categories, :only => [:index,:show] do
-    resources :types, :only => [:index,:show]
-  end
+  # resources :categories, :only => [:index,:show] do
+  #   resources :types, :only => [:index,:show]
+  # end
   resources :brands
   resources :users, :only => [:index]
   resources :items
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/login' => 'sessions#destroy'
 
   resources :users, :path => '/' do
-    resources :items, :except => [:index]
+    resources :items, :except => [:index,:new,:edit]
     resources :outfits, :except => [:index]
   end
 end
