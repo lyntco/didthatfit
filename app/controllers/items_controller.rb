@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :check_if_logged_in, :except => [:items]
+  before_action :check_if_logged_in, :except => [:index]
 
   def index
     @items = Item.all
@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   def create
     @user = User.where(:username => @current_user.username).first
     @item = Item.new item_params
-    # raise params.inspect
+    @item.image = "default_item.jpg"
     if @item.save
       @user.items << @item
       redirect_to( items_path )

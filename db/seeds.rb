@@ -20,14 +20,14 @@ me.friends << rich
 rich.friends << me
 
 
-i1 = Item.create( name: 'Cheetah Jacket', size: 'XS', fit: 'Too big')
-i2 = Item.create( name: 'Jeans', size: 'XS', fit: 'Just right')
+i1 = Item.create( name: 'Cheetah Jacket', size: 'XS', fit: 'big')
+i2 = Item.create( name: 'Jeans', size: 'XS', fit: 'right')
 
 me.items << i1 << i2
 
-i3 = Item.create( name: 'Industry Jeans', size: '32', fit: 'Just right')
-i4 = Item.create( name: 'Ninefold shirt', size: 'XL', fit: 'Too big')
-i5 = Item.create( name: 'Grey sweater', size: 'M', fit: 'Just right')
+i3 = Item.create( name: 'Industry Jeans', size: '32', fit: 'right')
+i4 = Item.create( name: 'Ninefold shirt', size: 'XL', fit: 'big')
+i5 = Item.create( name: 'Grey sweater', size: 'M', fit: 'small')
 
 rich.items << i3 << i4 << i5
 
@@ -103,3 +103,8 @@ c3.types << t3 << t9 << t17 << t18 << t23 << t25 << t26 << t27
 c4.types << t4 << t16 << t22
 c5.types << t5 << t20 << t21 << t24
 c6.types << t6
+
+t1.items << i1
+t9.items << i2 << i3
+t2.items << i4
+t14.items << i5

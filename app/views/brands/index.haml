@@ -1,7 +1,35 @@
+%h2 These brands run true to size
+- @fit.each do |brand|
+  %div
+    = link_to( brand.name, brand )
+    - unless @current_user.nil? || !@current_user.is_admin?
+      = link_to( 'Delete', brand, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+      = link_to( 'Edit', edit_brand_path(brand.id))
+
+%h2 These brands run big
+- @big.each do |brand|
+  %div
+    = link_to( brand.name, brand )
+    - unless @current_user.nil? || !@current_user.is_admin?
+      = link_to( 'Delete', brand, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+      = link_to( 'Edit', edit_brand_path(brand.id))
+
+
+%h2 These brands run small
+- @small.each do |brand|
+  %div
+    = link_to( brand.name, brand )
+    - unless @current_user.nil? || !@current_user.is_admin?
+      = link_to( 'Delete', brand, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+      = link_to( 'Edit', edit_brand_path(brand.id))
+
+
+
 %h2 All Brands
 
 - @brands.each do |brand|
-    %div
+  %div
     = link_to( brand.name, brand )
-    = link_to( 'Delete', brand, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
-    = link_to( 'Edit', edit_brand_path(brand.id))
+    - unless @current_user.nil? || !@current_user.is_admin?
+      = link_to( 'Delete', brand, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+      = link_to( 'Edit', edit_brand_path(brand.id))
