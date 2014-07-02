@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :brands
   resources :items, :except => [:show]
   resources :outfits, :except => [:show]
+  resources :type
+  resources :category
 
   resources :users, :path => '/u' do
     resources :items, :except => [:new,:edit,:create,:update,:destroy]
@@ -14,4 +16,5 @@ Rails.application.routes.draw do
   delete '/login' => 'sessions#destroy'
   post '/follow/:id' => 'users#follow'
   delete '/follow/:id' => 'users#unfollow'
+  get '/search' => 'pages#search'
 end

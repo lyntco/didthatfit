@@ -1,0 +1,11 @@
+%h2 Search results
+
+- if params[:search] != ""
+  %h3 You searched for "#{ params[:search] }" for the following "#{@results.length}" results:
+
+  %ul
+    - @results.each do |result|
+      %li
+        = link_to(result.name, result)
+- else
+  %h3 You didn't enter anything! Please try again.
