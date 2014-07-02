@@ -65,15 +65,24 @@ nav ul li a {
   margin: .1em;
   background: #ddd;
   width: 165px;
-  height: 165px;
+  max-height: 165px;
   text-align: center;
   position: relative;
+  -webkit-transition: display 0.5s ease;
+  -moz-transition: display 0.5s ease;
+  -o-transition: display 0.5s ease;
+  transition: display 0.5s ease;
+}
+
+.item:hover > .modbutton {
+  display: inline-block;
 }
 
 .item img {
   border-radius: 15%;
   width: 150px;
   height: 150px;
+  vertical-align: middle;
 }
 
 .right {
@@ -89,19 +98,18 @@ nav ul li a {
 }
 
 .item form.modbutton {
-  display: inline-block;
   font-size: .8em;
-  margin: .2em;
   position: absolute;
-  bottom: 9px;
+  bottom: 10px;
+  display: none;
 }
 
 .item form.modbutton:first-of-type {
-  left: 35px;
+  left: 10px;
 }
 
-.item form.modbutton:lsst-of-type {
-  right: 1px;
+.item form.modbutton:last-of-type {
+  right: 10px;
 }
 
 footer {

@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   def create
     @user = User.where(:username => @current_user.username).first
     @item = Item.new item_params
-    @item.image = "default_item.jpg"
+    @item.image = "default_item.jpg" if @item.image.nil?
     if @item.save
       @user.items << @item
       redirect_to( items_path )

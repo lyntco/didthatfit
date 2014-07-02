@@ -20,6 +20,7 @@ class OutfitsController < ApplicationController
     @f = ForecastIO.forecast(@coords.first, @coords.last, params: { units: 'si' })
     @temp = @f.currently.temperature
     @summary = @f.currently.summary
+    @offset = 31 - @temp
 
     @outfit = Outfit.new
     # Category.where(:name => 'Outerwear').first.items.first.type.warmth to get warmth
