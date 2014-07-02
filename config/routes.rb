@@ -17,4 +17,8 @@ Rails.application.routes.draw do
   post '/follow/:id' => 'users#follow'
   delete '/follow/:id' => 'users#unfollow'
   get '/search' => 'pages#search'
+
+  match 'auth/:provider/callback', to: 'sessions#fb_create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 end

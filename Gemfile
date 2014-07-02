@@ -29,11 +29,14 @@ gem 'spring',        group: :development
 gem 'haml'
 gem 'bcrypt'
 gem 'geocoder' #geolocation
-gem 'forecast_io' #weather
+# gem 'forecast_io' #weather
 
 gem 'carrierwave' #file upload
 gem 'mini_magick' #resize
 gem 'cloudinary' #cloud hosting
+
+gem 'omniauth' # for facebook auth
+gem 'omniauth-facebook', '1.4.0'
 
 gem 'rails_12factor', group: :production
 

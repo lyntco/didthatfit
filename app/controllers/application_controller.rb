@@ -24,4 +24,10 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path) unless @current_user.is_admin?
   end
 
+  def current_user
+    @current_user ||= User.where(:id => session[:user_id]).first if session[:user_id]
+  end
+
+  helper_method :current_user
+
 end
