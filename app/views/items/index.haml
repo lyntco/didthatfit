@@ -4,8 +4,6 @@
   = link_to( user_item_path( item.user.username,item.id) ) do
     %div.item{:class => item.fit}
       = image_tag( item.image_url(:thumb) )
-      %br/
-      = item.name
       - unless @current_user.nil? || !@current_user.is_admin?
         %br/
         = button_to( 'Edit', edit_item_path(item.id), :method => :get)

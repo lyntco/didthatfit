@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_if_logged_in, :except => [:new, :create, :index]
+  before_action :check_if_logged_in, :except => [:new, :create, :index,:show]
   # before_action :check_if_admin, :only => [:index]
 
   def index

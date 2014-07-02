@@ -1,5 +1,5 @@
 class BrandsController < ApplicationController
-  before_action :check_if_logged_in, :except => [:index]
+  before_action :check_if_logged_in, :except => [:index,:show]
 
   def index
     @brands = Brand.order(:name => :asc)
