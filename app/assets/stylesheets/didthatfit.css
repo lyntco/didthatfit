@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
-@import url(http://fonts.googleapis.com/css?family=Exo+2:400,100,100italic,200,200italic,300,300italic,400italic,500,500italic,600,600italic,700,700italic,800italic,800,900,900italic);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
 
 * {
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -8,7 +8,7 @@
 }
 
 html, body {
-  font-family: 'Exo 2', sans-serif;
+  font-family: 'PT Sans', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -54,7 +54,7 @@ nav ul li a {
 #content {
   max-width: 95%;
   margin: auto;
-  padding-top: 5em;
+  padding: 5em;
   margin-top: -5em;
 }
 
@@ -64,13 +64,16 @@ nav ul li a {
   padding: .5em;
   margin: .1em;
   background: #ddd;
-  width: 215px;
-  height: 215px;
+  width: 165px;
+  height: 165px;
   text-align: center;
+  position: relative;
 }
 
 .item img {
   border-radius: 15%;
+  width: 150px;
+  height: 150px;
 }
 
 .right {
@@ -85,10 +88,20 @@ nav ul li a {
   background: #0000bf;
 }
 
-.item form {
+.item form.modbutton {
   display: inline-block;
   font-size: .8em;
   margin: .2em;
+  position: absolute;
+  bottom: 9px;
+}
+
+.item form.modbutton:first-of-type {
+  left: 35px;
+}
+
+.item form.modbutton:lsst-of-type {
+  right: 1px;
 }
 
 footer {

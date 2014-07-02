@@ -41,7 +41,11 @@ class UsersController < ApplicationController
 
     if @current_user.authenticate(params[:user][:current_password])
       @user.update user_params
-      redirect_to( users_path )
+      if @current_user.is_admin?
+        redirect_to( users_path )
+      else
+        redirect_to( user_path(@current_user.username))
+      end
     else
       flash[:notice] = "Your current password didn't match. Please try again"
       redirect_to( edit_user_path(@current_user.username) )

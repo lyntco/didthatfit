@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.order(:created_at => :desc)
+    @title = "What's new"
   end
 
   def following
@@ -11,15 +12,15 @@ class ItemsController < ApplicationController
       @items = []
       @items += @current_user.items
 
-      @following.each do |f|
-        @items += f.items
-      end
+        @following.each do |f|
+          @items += f.items
+        end
 
       @items = @items.sort_by(&:created_at).reverse
+      @title = "Your feed"
     else
-      @items = Item.order(:created_at => :desc)
+      index
     end
-
     render :index
   end
 
@@ -42,7 +43,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find params[:id]
-    if @current_user.items.include? @item
+    if @current_user.is_admin? or @current_user.items.include? @item
       @item
     else
       redirect_to( user_path(@current_user.username) )
