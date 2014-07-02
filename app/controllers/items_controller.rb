@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :check_if_logged_in, :except => [:index]
+  before_action :check_if_logged_in, :except => [:index,:following]
 
   def index
     @items = Item.order(:created_at => :desc)
