@@ -2,7 +2,9 @@
 
 %h2= @summary
 
-%h2= @torso
-%h2= @legs
+%p= @torso
+%p= @legs
 
 %h2= "You need to wear things that add up to #{@offset} degrees if you're going outside"
+
+= button_to( 'Save outfit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')

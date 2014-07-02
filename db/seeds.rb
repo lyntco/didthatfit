@@ -14,7 +14,7 @@ Item.destroy_all
 User.destroy_all
 
 me = User.create( username: 'lynt', password: 'admin123', password_confirmation: 'admin123', email: 'strawww@gmail.com', is_admin: true)
-rich = User.create( username: 'rich', password: 'hahaha', password_confirmation: 'hahaha', email: 'rich@gmail.com')
+rich = User.create( username: 'rich', password: 'llllll', password_confirmation: 'llllll', email: 'rich@gmail.com')
 
 me.friends << rich
 rich.friends << me
@@ -64,7 +64,7 @@ b27.items << i5
 c1 = Category.create( name: 'Outerwear' )
 c2 = Category.create( name: 'Tops' )
 c3 = Category.create( name: 'Bottoms' )
-c4 = Category.create( name: 'Shoes' )
+c4 = Category.create( name: 'Footwear' )
 c5 = Category.create( name: 'Accessories' )
 c6 = Category.create( name: 'One Piece')
 

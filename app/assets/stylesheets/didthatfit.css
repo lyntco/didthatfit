@@ -27,6 +27,7 @@ nav {
   background: red;
   position: relative;
   z-index: 100;
+  background: #bf0000;
 }
 
 nav ul {
@@ -36,12 +37,18 @@ nav ul {
 
 nav ul li {
   display: inline-block;
-  padding-top: 2em;
 }
 
 nav ul li a {
   padding:1em;
-  background: #bf0000;
+}
+
+nav ul li a:hover {
+  background-color: #bf6666;
+}
+
+nav ul li form {
+  padding: .75em;
 }
 
 #wrap {

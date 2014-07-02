@@ -1,7 +1,7 @@
 module ApplicationHelper
   def smartnav
     links = ''
-    links += "<li>" + link_to('Home', root_path) + "</li>"
+    links += "<li>" + link_to('DidThatFit', root_path) + "</li>"
     if @current_user.present?
       links += "<li>" + link_to("#{@current_user.username}", user_path(@current_user.username)) + "</li>"
       links += "<li>" + link_to('Add an item', new_item_path) + "</li>"
