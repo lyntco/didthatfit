@@ -25,6 +25,8 @@ nav {
   width: 100%;
   text-align:center;
   background: red;
+  position: relative;
+  z-index: 100;
 }
 
 nav ul {
@@ -45,6 +47,14 @@ nav ul li a {
 #wrap {
   max-width: 960px;
   margin: auto;
+  background: yellow;
+}
+
+#content {
+  max-width: 95%;
+  margin: auto;
+  padding-top: 5em;
+  margin-top: -5em;
 }
 
 .item {
@@ -78,4 +88,9 @@ nav ul li a {
   display: inline-block;
   font-size: .8em;
   margin: .2em;
+}
+
+footer {
+  width: 95%;
+  text-align: center;
 }

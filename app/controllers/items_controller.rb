@@ -5,6 +5,23 @@ class ItemsController < ApplicationController
     @items = Item.order(:created_at => :desc)
   end
 
+  def following
+    if @current_user
+      @following = @current_user.friends # => array of friends
+      @items = []
+      @items += @current_user.items
+      @following.each do |f|
+        @items += f.items
+      end
+      @items = @items.sort_by(&:created_at).reverse
+      # raise params.inspect
+      render :index
+    else
+      @items = Item.order(:created_at => :desc)
+      render :index
+    end
+  end
+
   def create
     @user = User.where(:username => @current_user.username).first
     @item = Item.new item_params

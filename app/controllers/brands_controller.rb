@@ -22,6 +22,7 @@ class BrandsController < ApplicationController
         end
       end
     end
+
   end
 
   def create

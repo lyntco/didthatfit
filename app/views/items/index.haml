@@ -2,7 +2,7 @@
 
 - @items.each do |item|
   = link_to( user_item_path( item.user.username,item.id) ) do
-    %div.item.fit
+    %div.item{:class => item.fit}
       = image_tag( item.image_url(:thumb) )
       %br/
       = item.name
