@@ -13,6 +13,7 @@
 
 class Brand < ActiveRecord::Base
   mount_uploader :image, BrandsUploader
+  validates :name, :uniqueness => true
   has_many :items
   has_many :types, :through => :items
   has_many :categories, :through => :items

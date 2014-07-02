@@ -3,4 +3,7 @@
 
 %h3= @item.type.name
 
-= image_tag( @item.image )
+= image_tag( @item.image_url(:display) )
+
+= link_to( 'Delete', @item, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{@item.name}?"}) if @current_user.is_admin? || @item.user == @current_user
+= link_to( 'Edit', edit_item_path(@item.id)) if @current_user.is_admin? || @item.user == @current_user
