@@ -68,43 +68,46 @@ c4 = Category.create( name: 'Footwear' )
 c5 = Category.create( name: 'Accessories' )
 c6 = Category.create( name: 'One Piece')
 
-t1 = Type.create( name: 'Coat', warmth: 5)
-t2 = Type.create( name: 'T-shirt', warmth: 2 )
-t3 = Type.create( name: 'Shorts', warmth: 2 )
-t4 = Type.create( name: 'Sneakers', warmth: 2 )
+t1 = Type.create( name: 'Coat', warmth: 0.48)
+t2 = Type.create( name: 'T-shirt', warmth: 0.1 )
+t3 = Type.create( name: 'Shorts', warmth: 0.06 )
+t4 = Type.create( name: 'Sneakers', warmth: 0.02 )
 t5 = Type.create( name: 'Jewellery', warmth: 0)
-t6 = Type.create( name: 'Dress', warmth: 3)
-t7 = Type.create( name: 'Tank Top', warmth: 1)
-t8 = Type.create( name: 'Light Jacket/Cardigan', warmth: 3)
-t9 = Type.create( name: 'Jeans', warmth: 4)
-t10 = Type.create( name: 'Heavy Jacket', warmth: 5)
-t11 = Type.create( name: 'Normal Jacket', warmth: 4)
-t12 = Type.create( name: 'Business Shirt', warmth: 2 )
-t13 = Type.create( name: 'Button up Shirt', warmth: 3 )
-t14 = Type.create( name: 'Sweater', warmth: 4 )
-t15 = Type.create( name: 'Hoodie', warmth: 3 )
-t16 = Type.create( name: 'Boots', warmth: 4 )
-t17 = Type.create( name: 'Stockings', warmth: 1 )
-t18 = Type.create( name: 'Leggings/Tights', warmth: 2 )
-t20 = Type.create( name: 'Hat', warmth: 1 )
-t21 = Type.create( name: 'Beanie', warmth: 2 )
-t22 = Type.create( name: 'Lace up shoes', warmth: 3 )
-t23 = Type.create( name: 'Chinos', warmth: 3 )
+t6 = Type.create( name: 'Dress', warmth: 0.29)
+t7 = Type.create( name: 'Tank Top', warmth: 0.05)
+t8 = Type.create( name: 'Light Jacket/Cardigan', warmth: 0.36)
+t9 = Type.create( name: 'Jeans', warmth: 0.24)
+t10 = Type.create( name: 'Heavy Jacket', warmth: 0.44)
+t11 = Type.create( name: 'Normal Jacket', warmth: 0.42)
+t12 = Type.create( name: 'Business Shirt', warmth: 0.23 )
+t13 = Type.create( name: 'Button up Shirt', warmth: 0.34 )
+t14 = Type.create( name: 'Sweater', warmth: 0.36 )
+t15 = Type.create( name: 'Hoodie', warmth: 0.34 )
+t16 = Type.create( name: 'Boots', warmth: 0.10 )
+t17 = Type.create( name: 'Stockings', warmth: 0.2 )
+t18 = Type.create( name: 'Leggings/Tights', warmth: 0.28 )
+t20 = Type.create( name: 'Hat', warmth: 0.01 )
+t21 = Type.create( name: 'Beanie', warmth: 0.04 )
+t22 = Type.create( name: 'Lace up shoes', warmth: 0.02 )
+t23 = Type.create( name: 'Pants', warmth: 0.15 )
 t24 = Type.create( name: 'Sunglasses', warmth: 0 )
-t25 = Type.create( name: 'Mini Skirt', warmth: 1 )
-t26 = Type.create( name: 'Mid Skirt', warmth: 2 )
-t27 = Type.create( name: 'Long Skirt', warmth: 3 )
-t28 = Type.create( name: 'Long sleeve top', warmth: 3 )
-t29 = Type.create( name: 'Short sleeve top', warmth: 2 )
-t30 = Type.create( name: 'Crop top', warmth: 1 )
+t25 = Type.create( name: 'Mini Skirt', warmth: 0.14 )
+t26 = Type.create( name: 'Mid Skirt', warmth: 0.17 )
+t27 = Type.create( name: 'Long Skirt', warmth: 0.2 )
+t28 = Type.create( name: 'Long sleeve top', warmth: 0.30 )
+t29 = Type.create( name: 'Short sleeve top', warmth: 0.19 )
+t30 = Type.create( name: 'Crop top', warmth: 0.08 )
+t32 = Type.create( name: 'Vest', warmth: 0.10)
+t33 = Type.create( name: 'Sweatpants', warmth: 0.28)
+t34 = Type.create( name: 'Overalls', warmth: 0.30)
+t35 = Type.create( name: 'Socks', warmth: 0.04)
 
-
-c1.types << t1 << t8 << t10 << t11 << t14 << t15
+c1.types << t1 << t8 << t10 << t11 << t14 << t15 << t32
 c2.types << t2 << t7 << t12 << t13 << t28 << t29 << t30
-c3.types << t3 << t9 << t17 << t18 << t23 << t25 << t26 << t27
-c4.types << t4 << t16 << t22
+c3.types << t3 << t9 << t17 << t18 << t23 << t25 << t26 << t27 << t33
+c4.types << t4 << t16 << t22 << t35
 c5.types << t5 << t20 << t21 << t24
-c6.types << t6
+c6.types << t6 << t34
 
 t1.items << i1
 t9.items << i2 << i3
