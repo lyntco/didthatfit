@@ -1,9 +1,12 @@
 %h2 All items
 
 - @items.each do |item|
-  %div
-    = link_to( item.name, user_item_path( item.user.username , item.id) )
-    -# -raise params.inspect
-    - unless @current_user.nil? || !@current_user.is_admin?
-      = link_to( 'Delete', item, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
-      = link_to( 'Edit', edit_item_path(item.id))
+  = link_to( user_item_path( item.user.username,item.id) ) do
+    %div.item.fit
+      = image_tag( item.image_url(:thumb) )
+      %br/
+      = item.name
+      - unless @current_user.nil? || !@current_user.is_admin?
+        %br/
+        = button_to( 'Edit', edit_item_path(item.id), :method => :get)
+        = button_to( 'Delete', item, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{item.name}?"})

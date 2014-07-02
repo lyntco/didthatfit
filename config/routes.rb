@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root :to => 'brands#index'
+  # root :to => 'brands#index'
+  root :to => 'items#index'
   resources :brands
   resources :items, :except => [:show]
   resources :outfits, :except => [:show]

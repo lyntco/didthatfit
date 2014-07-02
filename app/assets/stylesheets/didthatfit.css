@@ -48,7 +48,34 @@ nav ul li a {
 }
 
 .item {
-  display: inline-block;
+  display: inline-table;
+  vertical-align: top;
   padding: .5em;
-  background: #00af00;
+  margin: .1em;
+  background: #ddd;
+  width: 220px;
+  height: 238px;
+  text-align: center;
+}
+
+.item img {
+  border-radius: 15%;
+}
+
+.right {
+  background: #00bf00;
+}
+
+.big {
+  background: #bf0000;
+}
+
+.small {
+  background: #0000bf;
+}
+
+.item form {
+  display: inline-block;
+  font-size: .8em;
+  margin: .2em;
 }

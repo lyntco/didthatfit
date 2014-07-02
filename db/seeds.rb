@@ -96,9 +96,11 @@ t26 = Type.create( name: 'Mid Skirt', warmth: 2 )
 t27 = Type.create( name: 'Long Skirt', warmth: 3 )
 t28 = Type.create( name: 'Long sleeve top', warmth: 3 )
 t29 = Type.create( name: 'Short sleeve top', warmth: 2 )
+t30 = Type.create( name: 'Crop top', warmth: 1 )
+
 
 c1.types << t1 << t8 << t10 << t11 << t14 << t15
-c2.types << t2 << t7 << t12 << t13 << t28 << t29
+c2.types << t2 << t7 << t12 << t13 << t28 << t29 << t30
 c3.types << t3 << t9 << t17 << t18 << t23 << t25 << t26 << t27
 c4.types << t4 << t16 << t22
 c5.types << t5 << t20 << t21 << t24

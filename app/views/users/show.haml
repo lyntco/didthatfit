@@ -7,17 +7,21 @@
 
 - if @user != @current_user
   - if @current_user.friends.include? @user
-    = link_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
+    = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
   - else
-    = link_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
+    = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
 
 %h3 Items
-- @user.items.each do |item|
-  = link_to( user_item_path(@user.username,item.id) ) do
-    %div.item
+- @user.items.order(:created_at => :desc).each do |item|
+  %div.item{:class => item.fit}
+    = link_to( user_item_path(@user.username,item.id) ) do
       = image_tag( item.image_url(:thumb) )
-      <br>
+      %br/
       = item.name
+    - if @current_user == @user || @current_user.is_admin?
+      %br/
+      = button_to( 'Edit', edit_item_path(item.id), :method => :get)
+      = button_to( 'Delete', item, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
 
 = "No items of clothing yet!" if @user.items.empty?
 

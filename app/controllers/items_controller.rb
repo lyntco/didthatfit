@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :check_if_logged_in, :except => [:index]
 
   def index
-    @items = Item.all
+    @items = Item.order(:created_at => :desc)
   end
 
   def create
@@ -38,13 +38,13 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find params[:id]
     @item.update( item_params )
-    redirect_to( items_path )
+    redirect_to( user_path(@current_user.username) )
   end
 
   def destroy
     item = Item.find params[:id]
     item.destroy
-    redirect_to( items_path )
+    redirect_to( user_path(@current_user.username) )
   end
 
   private
