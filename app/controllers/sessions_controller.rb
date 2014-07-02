@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def fb_create
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id # session is a private hash rails uses
-    redirect_to root_path
-  end
+  # def fb_create
+  #   user = User.from_omniauth(env["omniauth.auth"])
+  #   session[:user_id] = user.id # session is a private hash rails uses
+  #   redirect_to root_path
+  # end
 
   def create
     # raise params.inspect

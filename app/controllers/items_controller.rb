@@ -10,16 +10,17 @@ class ItemsController < ApplicationController
       @following = @current_user.friends # => array of friends
       @items = []
       @items += @current_user.items
+
       @following.each do |f|
         @items += f.items
       end
+
       @items = @items.sort_by(&:created_at).reverse
-      # raise params.inspect
-      render :index
     else
       @items = Item.order(:created_at => :desc)
-      render :index
     end
+
+    render :index
   end
 
   def create
