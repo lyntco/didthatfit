@@ -13,18 +13,23 @@ class SessionsController < ApplicationController
   end
 
   def instagram_callback
-    response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL) # => a hash inside a hash {:access_token=> "",:user => {} }
-    #<Hashie::Mash access_token="5538991.443fb62.c9e5031ee5f74d56851270e7371420b8" user=#<Hashie::Mash bio="" full_name="Strawdoll" id="5538991" profile_picture="http://images.ak.instagram.com/profiles/profile_5538991_75sq_1376843347.jpg" username="strawz" website="http://facebook.com/strawdoll">>
+    response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL) # => a hash inside a hash {:access_token=> "",:user => {:id => "", :username => ""} }
     session[:access_token] = response.access_token
-
-    # raise params.inspect
     already_signed_up = User.find_by(:instagram_id => response.user.id)
-    if already_signed_up
-      # already_signed_up.id = response.user.id
-      # already_signed_up.save
-      session[:user_id] = already_signed_up.id
+    if session[:user_id].nil? && already_signed_up #if signed out and linked w/ instagram
+      session[:user_id] = already_signed_up.id #sign in with id
+      redirect_to(root_path)
+    elsif @current_user && already_signed_up.nil? # if logged in but not linked to instagram
+      @current_user.instagram_id = response.user.id
+      @current_user.save
+      redirect_to(root_path)
+    elsif @current_user && already_signed_up # to unlink instagram
+      @current_user.instagram_id = nil
+      @current_user.save
+      redirect_to( edit_user_path( @current_user.username) )
+    else
+      redirect_to( new_user_path )
     end
-    redirect_to(root_path)
   end
 
   def create
@@ -43,6 +48,7 @@ class SessionsController < ApplicationController
   def destroy
     # raise params.inspect
     session[:user_id] = nil
+
     redirect_to root_path
   end
 

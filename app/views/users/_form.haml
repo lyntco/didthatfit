@@ -26,7 +26,10 @@
     = f.label :size
     = f.text_field :size, :class => 'form-control'
   - if @current_user
-    = link_to("Sign in with instagram", '/oauth/connect')
+    - if @current_user.instagram_id
+      = link_to("Unlink instagram", '/oauth/connect')
+    -else
+      = link_to("Link instagram", '/oauth/connect')
 
     %div.formgroup
       Please enter your current password to save changes.
