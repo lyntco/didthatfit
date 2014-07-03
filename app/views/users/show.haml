@@ -1,44 +1,52 @@
-%h2= link_to( "@" + @user.username, @user.username)
-= image_tag( @user.avatar_url(:avatar_large) )
+%div.row
+  %h2= link_to( "@" + @user.username, @user.username)
+%div.row
+  = image_tag( @user.avatar_url(:avatar_large) )
+%div.row
+  - if @current_user && @user != @current_user
+    - if @current_user.friends.include? @user
+      = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
+    - else
+      = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
+%div.row
+  %h3 Top brands
+  = @brands.name
+%div.row
+  %h3 Items
+  %div.items.col-md-12
+    - @user.items.order(:created_at => :desc).each do |item|
+      %div.item{:class => item.fit}
+        - if item.brand
+          %div.brandbubble
+            = link_to ( item.brand ) do
+              = image_tag( item.brand.image_url(:thumb) )
+        %div.fitbubble{:class => item.fit}
+        = link_to( user_item_path(@user.username,item.id) ) do
+          = image_tag( item.image_url(:thumb) )
+        - unless @current_user.nil?
+          - if @current_user == item.user || @current_user.is_admin?
+            %br/
+            = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
+            = button_to( 'Delete', item, :method => :delete,:form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
 
-- if @user != @current_user
-  - if @current_user.friends.include? @user
-    = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
-  - else
-    = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
+  = "No items of clothing yet!" if @user.items.empty?
+%div.row
+  %h3 Following
+  %div.users.col-md-12
+    - @user.friends.each do |friend|
+      = link_to( user_path( friend.username ) ) do
+        %div.user.smallbox
+          = image_tag( friend.avatar_url(:avatar) )
 
-%h3 Top brands
-= @brands.name
+    = "Not following anybody yet!" if @user.friends.empty?
+%div.row
+  %h3 Followed by
+  %div.users.col-md-12
+    - @followers.each do |follower|
+      - found_follower = User.find_by(:id => follower.user_id )
+      =# link_to( "@" + found_follower.username, user_path( found_follower.username )) do
+      = link_to( user_path( found_follower.username )) do
+        %div.user.smallbox
+          = image_tag( found_follower.avatar_url(:avatar) )
 
-%h3 Items
-%div.items.col-md-12
-  - @user.items.order(:created_at => :desc).each do |item|
-    %div.item{:class => item.fit}
-      - if item.brand
-        %div.brandbubble
-          = link_to ( item.brand ) do
-            = image_tag( item.brand.image_url(:thumb) )
-      %div.fitbubble{:class => item.fit}
-      = link_to( user_item_path(@user.username,item.id) ) do
-        = image_tag( item.image_url(:thumb) )
-      - unless @current_user.nil?
-        - if @current_user == item.user || @current_user.is_admin?
-          %br/
-          = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
-          = button_to( 'Delete', item, :method => :delete,:form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
-
-= "No items of clothing yet!" if @user.items.empty?
-
-%h3 Following
-%div.users
-  - @user.friends.each do |friend|
-    = link_to( "@" + friend.username, user_path( friend.username ))
-
-  = "Not following anybody yet!" if @user.friends.empty?
-
-%h3 Followed by
-%div.users
-  - @followers.each do |follower|
-    - found_follower = User.where(:id => follower.user_id ).first
-    = link_to( "@" + found_follower.username, user_path( found_follower.username ))
-  = "Not followed by anybody yet!" if @followers.empty?
+    = "Not followed by anybody yet!" if @followers.empty?

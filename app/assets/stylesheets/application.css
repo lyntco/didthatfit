@@ -82,7 +82,7 @@ nav ul li form {
 .items {
   }
 
-.item, .user {
+.item, .user, .brand {
   display: inline-table;
   vertical-align: top;
   padding: .5em;
@@ -121,12 +121,35 @@ nav ul li form {
   display: inline-block;
 }
 
-.item img, .user img {
+.item img, .user img, .brand img {
   border-radius: 15%;
   width: 150px;
   height: 150px;
   vertical-align: middle;
 }
+
+.smallbox {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+}
+
+.smallbox img {
+  width: 100%;
+  height: 100%;
+}
+
+.med {
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+}
+
+.med img {
+  width: 100%;
+  height: 100%;
+}
+
 
 .brandbubble {
   width: 60px;

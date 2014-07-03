@@ -1,14 +1,16 @@
-%h2 All users
-
-%div.users
-  - @users.each do |user|
-    %div.user
-      = link_to( user_path(user.username) ) do
-        = image_tag( user.avatar_url(:avatar_large) )
-      - unless @current_user.nil? || !@current_user.is_admin?
-        = button_to( 'Edit', edit_user_path(user.username), :method => :get, :form_class => 'modbutton' )
-        - adminstat = "Add" if !user.is_admin?
-        - adminstat = "Remove" if user.is_admin?
-        = button_to( "#{ adminstat } admin", edit_user_path(user.username),:form_class => 'modbutton admin' )
-        = button_to( 'Delete', user_path(user.username ), :method => :delete, :data => {:confirm => "Are you sure you want to delete #{user.username}?"}, :form_class => 'modbutton')
+%div.row
+  %div.col-md-12
+    %h2 All users
+%div.row
+  %div.users.col-md-12
+    - @users.each do |user|
+      %div.user
+        = link_to( user_path(user.username) ) do
+          = image_tag( user.avatar_url(:avatar_large) )
+        - unless @current_user.nil? || !@current_user.is_admin?
+          = button_to( 'Edit', edit_user_path(user.username), :method => :get, :form_class => 'modbutton' )
+          - adminstat = "Add" if !user.is_admin?
+          - adminstat = "Remove" if user.is_admin?
+          = button_to( "#{ adminstat } admin", edit_user_path(user.username),:form_class => 'modbutton admin' )
+          = button_to( 'Delete', user_path(user.username ), :method => :delete, :data => {:confirm => "Are you sure you want to delete #{user.username}?"}, :form_class => 'modbutton')
 

@@ -1,13 +1,13 @@
-%h2 Search results
-
-- if params[:search] != ""
-  %h3 You searched for "#{ params[:search] }" for the following "#{@results.length}" results:
-
-  %ul
-    - @results.each do |result|
-      %li
-        = link_to(result.name, user_item_path( result.user, result.id ) ) if result.is_a? Item
-        = link_to(result.name, result) if result.is_a? Brand
-        = link_to(result.username, user_path( result.username ) ) if result.is_a? User
-- else
-  %h3 You didn't enter anything! Please try again.
+%div.row
+  %h2 Search results
+%div.row
+  - if params[:search] != ""
+    %h3 You searched for "#{ params[:search] }" for the following "#{@results.length}" results:
+    %ul
+      - @results.each do |result|
+        %li
+          = link_to(result.name, user_item_path( result.user, result.id ) ) if result.is_a? Item
+          = link_to(result.name, result) if result.is_a? Brand
+          = link_to(result.username, user_path( result.username ) ) if result.is_a? User
+  - else
+    %h3 You didn't enter anything! Please try again.

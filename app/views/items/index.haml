@@ -1,14 +1,15 @@
-%h2= @title
-
-- @items.each do |item|
-  %div.item{:class => item.fit}
-    - if item.brand
-      %div.brandbubble
-        = link_to ( item.brand) do
-          = image_tag( item.brand.image_url(:thumb) )
-    %div.fitbubble{:class => item.fit}
-    = link_to( user_item_path( item.user.username,item.id) ) do
-      = image_tag( item.image_url(:thumb) )
-    - unless @current_user.nil? || !@current_user.is_admin?
-      = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
-      = button_to( 'Delete', item, :method => :delete, :form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
+%div.row
+  %h2= @title
+%div.row
+  - @items.each do |item|
+    %div.item{:class => item.fit}
+      - if item.brand
+        %div.brandbubble
+          = link_to ( item.brand) do
+            = image_tag( item.brand.image_url(:thumb) )
+      %div.fitbubble{:class => item.fit}
+      = link_to( user_item_path( item.user.username,item.id) ) do
+        = image_tag( item.image_url(:thumb) )
+      - unless @current_user.nil? || !@current_user.is_admin?
+        = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
+        = button_to( 'Delete', item, :method => :delete, :form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
