@@ -9,15 +9,15 @@ class SessionsController < ApplicationController
   def instagram_callback
     response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL) # => a hash inside a hash {:access_token=> "",:user => {:id => "", :username => ""} }
     session[:access_token] = response.access_token
-    already_signed_up = User.find_by(:instagram_id => response.user.id)
-    if session[:user_id].nil? && already_signed_up #if signed out and linked w/ instagram
-      session[:user_id] = already_signed_up.id #sign in with id
+    already_linked_user = User.find_by(:instagram_id => response.user.id)
+    if session[:user_id].nil? && already_linked_user #if signed out and linked w/ instagram
+      session[:user_id] = already_linked_user.id #sign in with id
       redirect_to(root_path)
-    elsif @current_user && already_signed_up.nil? # if logged in but not linked to instagram
+    elsif @current_user && already_linked_user.nil? # if logged in but not linked to instagram
       @current_user.instagram_id = response.user.id
       @current_user.save
-      redirect_to(root_path)
-    elsif @current_user && already_signed_up # to unlink instagram
+      redirect_to( edit_user_path( @current_user.username) )
+    elsif @current_user && already_linked_user # to unlink instagram
       # binding.pry
       @current_user.instagram_id = nil
       @current_user.save

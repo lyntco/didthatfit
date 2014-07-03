@@ -65,15 +65,15 @@ class OutfitsController < ApplicationController
       @outfit_for_today << "default_torso"
     end
 
-    # if @torso_out.load.any?
-    #   item = @torso_out.select {|i| i.w < @adjusting_clo }.sample
-    #   if item
-    #     @outfit_for_today << item
-    #     @adjusting_clo -= item.w
-    #   else
-    #     @outfit_for_today << "default_outer"
-    #   end
-    # end
+    if @torso_out.load.any?
+      item = @torso_out.select {|i| i.w < @adjusting_clo }.sample
+      if item
+        @outfit_for_today << item
+        @adjusting_clo -= item.w
+      else
+        @outfit_for_today << "default_outer"
+      end
+    end
 
     # put into array either @whole_body or @torso + @legs
     # add @torso_out if cold, add @torso_out &/ @legs to @whole_body if cold

@@ -5,7 +5,7 @@
 - @brand_items.order(:created_at => :desc).each do |item|
   %div.item{:class => item.fit}
     = link_to( user_item_path(item.user.username,item.id) ) do
-      = image_tag( item.image_url(:thumb) )
+      = image_tag( item )
     - unless @current_user.nil?
       - if @current_user == item.user || @current_user.is_admin?
         %br/

@@ -92,14 +92,6 @@ nav ul li form {
   position: relative;
 }
 
-.modbutton {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  display: none;
-}
-
 .item:hover > .modbutton {
   display: inline-block;
 }
@@ -136,6 +128,11 @@ nav ul li form {
   font-size: .8em;
   position: absolute;
   bottom: 10px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  display: none;
 }
 
 .item form.modbutton:first-of-type {
