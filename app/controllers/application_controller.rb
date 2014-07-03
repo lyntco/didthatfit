@@ -29,7 +29,8 @@ class ApplicationController < ActionController::Base
     configuration.api_key = 'eded896de561f7d609f6e31f5d4d381b'
   end
 
-  CALLBACK_URL = "http://localhost:3000/oauth/callback"
+  # CALLBACK_URL = "http://localhost:3000/oauth/callback"
+  CALLBACK_URL = "http://didthatfit.herokuapp.com/oauth/callback"
 
   Instagram.configure do |config|
     config.client_id = "443fb627019a405f920e934c9c068ec4"
