@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(:username => params[:id])
     @followers = Friendship.where(:friend_id => @user.id)
+    @brands = @user.items.first.brand
   end
 
   def update

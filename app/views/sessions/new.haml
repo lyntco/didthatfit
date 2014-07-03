@@ -1,12 +1,15 @@
 %h2 Login
 
-= form_tag '/login' do
+= form_tag('/login', :class => "form-horizontal", :role => "form") do
   %div.formgroup
-    = label_tag 'username'
-    = text_field_tag 'username', nil, :autofocus => true, :class => 'form-control' #NEEEDS NIL
+    = label_tag 'username', nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = text_field_tag 'username', nil, :autofocus => true, :class => 'form-control' #NEEEDS NIL
   %div.formgroup
-    = label_tag 'password'
-    = password_field_tag 'password',nil, :class => 'form-control'
+    = label_tag 'password',nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = password_field_tag 'password',nil, :class => 'form-control'
   %div.formgroup
-    = submit_tag 'Sign in', :class =>"btn btn-default"
-    = button_to('Sign in with instagram', "/oauth/connect", :class =>"btn btn-default")
+    %div.col-sm-offset-2.col-sm-10
+      = submit_tag 'Sign in', :class =>"btn btn-default"
+      = button_to('Sign in with instagram', "/oauth/connect", :class =>"btn btn-default")

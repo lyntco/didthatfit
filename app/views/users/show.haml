@@ -7,10 +7,18 @@
   - else
     = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
 
+%h3 Top brands
+= @brands.name
+
 %h3 Items
 %div.items.col-md-12
   - @user.items.order(:created_at => :desc).each do |item|
     %div.item{:class => item.fit}
+      - if item.brand
+        %div.brandbubble
+          = link_to ( item.brand ) do
+            = image_tag( item.brand.image_url(:thumb) )
+      %div.fitbubble{:class => item.fit}
       = link_to( user_item_path(@user.username,item.id) ) do
         = image_tag( item.image_url(:thumb) )
       - unless @current_user.nil?
@@ -22,14 +30,15 @@
 = "No items of clothing yet!" if @user.items.empty?
 
 %h3 Following
-- @user.friends.each do |friend|
-  = link_to( "@" + friend.username, user_path( friend.username ))
+%div.users
+  - @user.friends.each do |friend|
+    = link_to( "@" + friend.username, user_path( friend.username ))
 
-= "Not following anybody yet!" if @user.friends.empty?
+  = "Not following anybody yet!" if @user.friends.empty?
 
 %h3 Followed by
--# raise User.where(:id => @followers.first.user_id ).first
-- @followers.each do |follower|
-  - found_follower = User.where(:id => follower.user_id ).first
-  = link_to( "@" + found_follower.username, user_path( found_follower.username ))
-= "Not followed by anybody yet!" if @followers.empty?
+%div.users
+  - @followers.each do |follower|
+    - found_follower = User.where(:id => follower.user_id ).first
+    = link_to( "@" + found_follower.username, user_path( found_follower.username ))
+  = "Not followed by anybody yet!" if @followers.empty?
