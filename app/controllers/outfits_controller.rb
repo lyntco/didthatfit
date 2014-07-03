@@ -12,7 +12,10 @@ class OutfitsController < ApplicationController
 
   def new
     # raise params.inspect
-    @coords = Geocoder.coordinates("sydney")
+    @ip_location = request.location
+    # raise
+    @coords = Geocoder.coordinates( @ip_location.city ) if Rails.env.production?
+    @coords = Geocoder.coordinates( 'sydney' ) if Rails.env.development?
     @f = ForecastIO.forecast(@coords.first, @coords.last, params: { units: 'si' })
     @temp = @f.currently.temperature
     @summary = @f.currently.summary
@@ -59,21 +62,23 @@ class OutfitsController < ApplicationController
 
     if @torso.load.any?
       item = @torso.select {|i| i.w < @adjusting_clo }.sample
+      if item
       @outfit_for_today << item
       @adjusting_clo -= item.w
+      end
     else
       @outfit_for_today << "default_torso"
     end
 
-    if @torso_out.load.any?
-      item = @torso_out.select {|i| i.w < @adjusting_clo }.sample
-      if item
-        @outfit_for_today << item
-        @adjusting_clo -= item.w
-      else
-        @outfit_for_today << "default_outer"
-      end
-    end
+    # if @torso_out.load.any?
+    #   item = @torso_out.select {|i| i.w < @adjusting_clo }.sample
+    #   if item
+    #     @outfit_for_today << item
+    #     @adjusting_clo -= item.w
+    #   else
+    #     @outfit_for_today << "default_outer"
+    #   end
+    # end
 
     # put into array either @whole_body or @torso + @legs
     # add @torso_out if cold, add @torso_out &/ @legs to @whole_body if cold

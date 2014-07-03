@@ -1,9 +1,8 @@
-%h2= "@" + @user.username
+%h2= link_to( "@" + @user.username, @user.username)
 = image_tag( @user.avatar_url(:avatar_large) )
-%p
-= @user.name
-%p
-= @user.email
+
+-# %p
+-#   = @user.email
 
 - if @user != @current_user
   - if @current_user.friends.include? @user
@@ -24,20 +23,20 @@
 
 = "No items of clothing yet!" if @user.items.empty?
 
-%h3 Outfits
-- @user.outfits.each do |outfit|
-  %li= link_to( outfit.id, user_outfit_path(@user.username,outfit.id) )
+-# %h3 Outfits
+-# - @user.outfits.each do |outfit|
+-#   %li= link_to( outfit.id, user_outfit_path(@user.username,outfit.id) )
 
-= "No outfits yet!" if @user.outfits.empty?
+-# = "No outfits yet!" if @user.outfits.empty?
 
 %h3 Following
 - @user.friends.each do |friend|
-  = link_to( friend.username, user_path( friend.username ))
+  = link_to( "@" + friend.username, user_path( friend.username ))
 = "Not following anybody yet!" if @user.friends.empty?
 
 %h3 Followed by
 -# raise User.where(:id => @followers.first.user_id ).first
 - @followers.each do |follower|
   - found_follower = User.where(:id => follower.user_id ).first
-  = link_to( found_follower.username, user_path( found_follower.username ))
+  = link_to( "@" + found_follower.username, user_path( found_follower.username ))
 = "Not followed by anybody yet!" if @followers.empty?

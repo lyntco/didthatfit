@@ -1,17 +1,16 @@
-%h2= @temp.to_s + " degrees"
+%h2 You should wear:
 
-%h2= @summary
-
-%h2= "You need to wear things that add up to #{ @offset.to_i } degrees if you're going outside"
-
-- @outfit_for_today.each do |item|
-  %div.item
-    = image_tag( item.image_url(:thumb) )
+%div.items
+  - @outfit_for_today.reverse.each do |item|
+    %div.item
+      = image_tag( item.image_url(:thumb) )
 
 = @adjusting_clo.round(2)
 
-= @clos
-
-=# button_to( 'Save outfit', new_outfit_path, :method => :get, :form_class => 'modbutton')
-
 %p= @r.to_s + " clos"
+
+
+%div.weathersummary
+  %h2= @temp.to_s + " degrees: " + @summary
+
+  %h2= "You need to wear things that add up to #{ @offset.to_i } degrees if you're going outside!"

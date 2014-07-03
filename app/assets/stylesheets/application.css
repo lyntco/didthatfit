@@ -80,6 +80,12 @@ nav ul li form {
   margin-top: -5em;
 }
 
+.items {
+  width: 600px;
+  margin: auto;
+  background: red;
+}
+
 .item {
   display: inline-table;
   vertical-align: top;
@@ -142,6 +148,11 @@ nav ul li form {
 .item form.modbutton:last-of-type {
   right: 10px;
 }
+
+.weathersummary {
+  text-align: center;
+}
+
 
 footer {
   width: 95%;

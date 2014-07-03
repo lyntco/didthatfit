@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
-  # root :to => 'brands#index'
   root :to => 'items#following'
   resources :brands
   resources :items, :except => [:show]
-  resources :outfits, :except => [:show]
-  resources :type
-  resources :category
+  resources :outfits, :except => [:show,:create]
 
   resources :users, :path => '/u' do
     resources :items, :except => [:new,:edit,:create,:update,:destroy]
@@ -23,7 +20,4 @@ Rails.application.routes.draw do
   get '/oauth/connect' => 'sessions#instagram'
   get '/oauth/callback' => 'sessions#instagram_callback'
 
-  # match 'auth/:provider/callback', to: 'sessions#fb_create', via: [:get, :post]
-  # match 'auth/failure', to: redirect('/'), via: [:get, :post]
-  # match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 end
