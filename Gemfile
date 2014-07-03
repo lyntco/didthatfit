@@ -39,6 +39,8 @@ gem 'cloudinary' #cloud hosting
 # gem 'omniauth-facebook', '1.4.0'
 gem 'instagram'
 
+gem 'bootstrap-sass', '~> 3.2.0'
+
 gem 'rails_12factor', group: :production
 
 group :development do

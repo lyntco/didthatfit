@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/contact' => 'pages#contact'
 
   get '/oauth/connect' => 'sessions#instagram'
+  get '/oauth/callback' => 'sessions#instagram_callback'
 
   # match 'auth/:provider/callback', to: 'sessions#fb_create', via: [:get, :post]
   # match 'auth/failure', to: redirect('/'), via: [:get, :post]

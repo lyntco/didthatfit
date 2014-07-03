@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   Instagram.configure do |config|
     config.client_id = "443fb627019a405f920e934c9c068ec4"
-    config.client_secret = "443fb627019a405f920e934c9c068ec4"
+    config.client_secret = "771185a71c734b319e85a835c172b817"
   end
 
 end
