@@ -70,6 +70,9 @@ GEM
       tilt
     hashie (3.1.0)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     instagram (1.1.1)
       faraday (>= 0.7, < 0.10)
@@ -92,6 +95,7 @@ GEM
       subexec (~> 0.2.1)
     minitest (5.3.5)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     multipart-post (2.0.0)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -178,6 +182,7 @@ DEPENDENCIES
   forecast_io
   geocoder
   haml
+  httparty
   instagram
   jbuilder (~> 2.0)
   jquery-rails

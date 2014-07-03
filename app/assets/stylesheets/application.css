@@ -68,10 +68,8 @@ nav ul li form {
   padding: .75em;
 }
 
-#wrap {
-  max-width: 960px;
-  margin: auto;
-  background: yellow;
+.container {
+  padding: 0 5em;
   min-height: 50em;
 }
 

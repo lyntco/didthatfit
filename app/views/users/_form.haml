@@ -1,35 +1,37 @@
 = form_for @user, :url => @user.id ? "/u/#{@user.username}" : "/u" do |f|
 
   - unless @current_user.present?
-    %p
+    %div.formgroup
     = f.label :username
-    = f.text_field :username
-  %p
-  = image_tag( @user.avatar_url(:avatar) )
-  %p
-  = f.label :avatar
-  = f.file_field :avatar
-  - f.text_field :avatar_cache
-  %p
-  = f.label :name
-  = f.text_field :name
-  %p
-  = f.label :password
-  = f.password_field :password
-  %p
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
-  %p
-  = f.label :email
-  = f.text_field :email
-  %p
-  = f.label :size
-  = f.text_field :size
+    = f.text_field :username, :class => 'form-control'
+  %div.formgroup
+    = image_tag( @user.avatar_url(:avatar) )
+  %div.formgroup
+    = f.label :avatar
+    = f.file_field :avatar, :class => 'form-control'
+    - f.text_field :avatar_cache, :class => 'form-control'
+  %div.formgroup
+    = f.label :name
+    = f.text_field :name, :class => 'form-control'
+  %div.formgroup
+    = f.label :password
+    = f.password_field :password, :class => 'form-control'
+  %div.formgroup
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation, :class => 'form-control'
+  %div.formgroup
+    = f.label :email
+    = f.text_field :email, :class => 'form-control'
+  %div.formgroup
+    = f.label :size
+    = f.text_field :size, :class => 'form-control'
   - if @current_user
-    %p
-    Please enter your current password to save changes.
-    %p
-    = f.label :current_password
-    = f.password_field :current_password
-  %p
-  = f.submit
+    = link_to("Sign in with instagram", '/oauth/connect')
+
+    %div.formgroup
+      Please enter your current password to save changes.
+    %div.formgroup
+      = f.label :current_password
+      = f.password_field :current_password, :class => 'form-control'
+  %div.formgroup
+    = f.submit :class =>"btn btn-default"

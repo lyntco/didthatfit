@@ -26,12 +26,12 @@ class OutfitsController < ApplicationController
     # & @current_user.items will only keep the items that are the current user's and belong in the category
     # my_items = @current_user.items
     if @current_user.present?
-      @torso = Category.where(:name => 'Tops').first.items & @current_user.items
-      @torso_out = Category.where(:name => 'Outerwear').first.items & @current_user.items
-      @legs = Category.where(:name => 'Bottoms').first.items & @current_user.items
-      @feet = Category.where(:name => 'Footwear').first.items & @current_user.items
-      @accessories = Category.where( name: 'Accessories' ).first.items & @current_user.items
-      @whole_body = Category.where( name: 'One Piece').first.items & @current_user.items
+      @torso = Category.find_by(:name => 'Tops').items & @current_user.items
+      @torso_out = Category.find_by(:name => 'Outerwear').items & @current_user.items
+      @legs = Category.find_by(:name => 'Bottoms').items & @current_user.items
+      @feet = Category.find_by(:name => 'Footwear').items & @current_user.items
+      @accessories = Category.find_by( name: 'Accessories' ).items & @current_user.items
+      @whole_body = Category.find_by( name: 'One Piece').items & @current_user.items
     end
     @outfit_for_today = []
     # use blackjack logic?

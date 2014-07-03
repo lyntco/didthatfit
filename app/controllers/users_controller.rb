@@ -25,19 +25,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.where(:username => params[:id]).first
+    @user = User.find_by(:username => params[:id])
     if params[:id] != @current_user.username && @current_user.is_admin? == false
       redirect_to( edit_user_path(@current_user.username) )
     end
   end
 
   def show
-    @user = User.where(:username => params[:id]).first
+    @user = User.find_by(:username => params[:id])
     @followers = Friendship.where(:friend_id => @user.id)
   end
 
   def update
-    @user = User.where(:username => params[:id]).first
+    @user = User.find_by(:username => params[:id])
 
     if @current_user.authenticate(params[:user][:current_password])
       @user.update user_params
@@ -54,21 +54,21 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.where(:username => params[:id]).first
+    user = User.find_by(:username => params[:id])
     user.destroy
     redirect_to( users_path )
   end
 
   def follow
-    user_to_add = User.where(:username => params[:id]).first
+    user_to_add = User.find_by(:username => params[:id])
     @current_user.friends << user_to_add
     redirect_to( user_path( user_to_add.username) )
   end
 
   def unfollow
     # raise params.inspect
-    user_to_remove = User.where(:username => params[:id]).first
-    friendship = @current_user.friendships.where( :friend_id => user_to_remove.id ).first
+    user_to_remove = User.find_by(:username => params[:id])
+    friendship = @current_user.friendships.find_by( :friend_id => user_to_remove.id )
     friendship.destroy
     redirect_to( user_path( user_to_remove.username) )
   end

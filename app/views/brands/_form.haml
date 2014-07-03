@@ -1,13 +1,13 @@
 = form_for @brand do |f|
-  %p
-  = f.label :name
-  = f.text_field :name
-  %p
-  = f.label :image
-  = f.file_field :image
-  - f.text_field :image_cache
-  %p
-  = f.label :website
-  = f.text_field :website
-  %p
-  = f.submit
+  %div.formgroup
+    = f.label :name
+    = f.text_field :name, :class => 'form-control'
+  %div.formgroup
+    = f.label :image
+    = f.file_field :image, :class => 'form-control'
+    - f.text_field :image_cache, :class => 'form-control'
+  %div.formgroup
+    = f.label :website
+    = f.text_field :website, :class => 'form-control'
+  %div.formgroup
+    = f.submit :class =>"btn btn-default"

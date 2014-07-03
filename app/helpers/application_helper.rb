@@ -2,6 +2,7 @@ module ApplicationHelper
   def smartnav
     links = ''
     links += "<li>" + link_to('DidThatFit', root_path) + "</li>"
+    links += "<li>" + link_to('Brands', brands_path) + "</li>"
     if @current_user.present?
       links += "<li>" + link_to("#{@current_user.username}", user_path(@current_user.username)) + "</li>"
       links += "<li>" + link_to('Add an item', new_item_path) + "</li>"
@@ -9,7 +10,6 @@ module ApplicationHelper
     if @current_user.present? && @current_user.is_admin? # @current_user.try(:is_admin)
       links += "<li>" + link_to('View users', users_path) + "</li>"
       links += "<li>" + link_to('View items', items_path) + "</li>"
-      links += "<li>" + link_to('View brands', brands_path) + "</li>"
     end
     if @current_user.present?
       links += "<li>" + link_to('Settings', edit_user_path(@current_user.username)) + "</li>"

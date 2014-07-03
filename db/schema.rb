@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702094121) do
+ActiveRecord::Schema.define(version: 20140703043201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,9 +80,8 @@ ActiveRecord::Schema.define(version: 20140702094121) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_admin",         default: false
-    t.string   "oauth_token"
-    t.datetime "oauth_expires_at"
+    t.boolean  "is_admin",        default: false
+    t.string   "instagram_id"
   end
 
 end

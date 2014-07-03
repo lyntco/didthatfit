@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @user = User.where(:username => @current_user.username).first
+    @user = User.find_by(:username => @current_user.username)
     @item = Item.new item_params
     @item.image = "default_item.jpg" if @item.image.nil?
     if @item.save

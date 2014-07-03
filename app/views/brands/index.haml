@@ -25,9 +25,9 @@
 
 
 
-%h2 All Brands
+%h2 Other Brands
 
-- @brands.each do |brand|
+- @not_sorted.each do |brand|
   %div
     = link_to( brand.name, brand )
     - unless @current_user.nil? || !@current_user.is_admin?

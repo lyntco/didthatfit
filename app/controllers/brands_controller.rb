@@ -22,6 +22,7 @@ class BrandsController < ApplicationController
         end
       end
     end
+    @not_sorted = @brands - @small - @fit - @big
 
   end
 
@@ -46,6 +47,7 @@ class BrandsController < ApplicationController
 
   def show
     @brand = Brand.find params[:id]
+    @brand_items = @brand.items
   end
 
   def update
