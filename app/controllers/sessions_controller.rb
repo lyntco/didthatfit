@@ -24,8 +24,10 @@ class SessionsController < ApplicationController
       @current_user.save
       redirect_to(root_path)
     elsif @current_user && already_signed_up # to unlink instagram
+      # binding.pry
       @current_user.instagram_id = nil
       @current_user.save
+      # raise "skdjalksdj"
       redirect_to( edit_user_path( @current_user.username) )
     else
       redirect_to( new_user_path )
