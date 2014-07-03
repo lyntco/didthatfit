@@ -64,6 +64,8 @@ a:link {
   max-height: 165px;
   text-align: center;
   position: relative;
+  border-radius: 5%;
+  border: 1px solid #aaa;
 }
 
 .modbutton {
@@ -89,7 +91,7 @@ a:link {
   right: 10px;
 }
 
-.item:hover > .modbutton, .item:hover > .brandbubble, .user:hover > .modbutton {
+.item:hover > .modbutton, .item:hover > .brandbubble, .user:hover > .modbutton, .user:hover > .namebubble {
   display: inline-block;
 }
 
@@ -140,6 +142,19 @@ a:link {
   width: 100%;
   height: 100%;
   border-radius: 0;
+}
+
+.namebubble {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  position: absolute;
+  top: -5px;
+  left: 25%;
+  border-radius: 40%;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+  display: none;
 }
 
 .fitbubble {

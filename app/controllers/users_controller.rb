@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user.instagram_id = session[:instagram_id] if session[:instagram_id]
     if @user.save
       session[:user_id] = @user.id
+      session[:instagram_id] = nil
       redirect_to( root_path )
     else
       render :new

@@ -44,7 +44,7 @@
   %div.users.col-md-12
     - @followers.each do |follower|
       - found_follower = User.find_by(:id => follower.user_id )
-      =# link_to( "@" + found_follower.username, user_path( found_follower.username )) do
+      %div.brandbubble
       = link_to( user_path( found_follower.username )) do
         %div.user.smallbox
           = image_tag( found_follower.avatar_url(:avatar) )

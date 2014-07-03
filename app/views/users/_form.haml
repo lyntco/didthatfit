@@ -39,10 +39,11 @@
     %div.col-sm-10
       = f.text_field :size, :class => 'form-control'
   - if @current_user
-    - if @current_user.instagram_id
-      = link_to("Unlink my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
-    -else
-      = link_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
+    %div.col-sm-offset-2.col-sm-10
+      - if @current_user.instagram_id
+        = link_to("Unlink my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
+      -else
+        = link_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
 
     %div.formgroup
       Please enter your current password to save changes.

@@ -2,8 +2,8 @@
   %h2 These brands run true to size
 %div.row
   - @fit.each do |brand|
-    %div.brand.med
-      = link_to( brand_path( brand ) ) do
+    = link_to( brand_path( brand ) ) do
+      %div.brand.med
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
         = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
@@ -12,8 +12,8 @@
   %h2 These brands run big
 %div.row
   - @big.each do |brand|
-    %div.brand.med
-      = link_to( brand_path( brand ) ) do
+    = link_to( brand_path( brand ) ) do
+      %div.brand.med
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
         = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
@@ -23,8 +23,8 @@
   %h2 These brands run small
 %div.row
   - @small.each do |brand|
-    %div.brand.med
-      = link_to( brand_path( brand ) ) do
+    = link_to( brand_path( brand ) ) do
+      %div.brand.med
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
         = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
@@ -35,8 +35,8 @@
   %h2 Other Brands
 %div.row
   - @not_sorted.each do |brand|
-    %div.brand.med
-      = link_to( brand_path( brand ) ) do
+    = link_to( brand_path( brand ) ) do
+      %div.brand.med
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
         = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
