@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
         end
 
       @items = @items.sort_by(&:created_at).reverse
-      @title = "Your feed"
+      @title = "Watch list"
     else
       index
     end

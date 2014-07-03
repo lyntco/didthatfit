@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
       # raise "skdjalksdj"
       redirect_to( edit_user_path( @current_user.username) )
     else
+      session[:instagram_id] = response.user.id
       redirect_to( new_user_path )
     end
   end
@@ -44,6 +45,7 @@ class SessionsController < ApplicationController
   def destroy
     # raise params.inspect
     session[:user_id] = nil
+    session[:instagram_id] = nil
 
     redirect_to root_path
   end

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     # raise params.inspect
     @user.username = @user.username.downcase # forces downcase username
+    @user.instagram_id = session[:instagram_id] if session[:instagram_id]
     if @user.save
       session[:user_id] = @user.id
       redirect_to( root_path )
