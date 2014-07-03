@@ -4,6 +4,7 @@ module ApplicationHelper
     # links += "<li>" + link_to('DidThatFit.me', root_path) + "</li>"
     links += "<li>" + link_to('What Brands fit?', brands_path) + "</li>"
     if @current_user.present?
+      links += "<li>" + link_to('Recent Items', items_path) + "</li>"
       links += "<li>" + link_to("#{@current_user.username}", user_path(@current_user.username)) + "</li>"
       links += "<li>" + link_to('Add an item', new_item_path) + "</li>"
     end
@@ -17,7 +18,6 @@ module ApplicationHelper
       links += "<li> #{ link_to("Logout #{ @current_user.username }", login_path, :method => :delete, :data => { :confirm => "Are you sure you want to logout?" })  }</li>"
     else
       links += "<li> #{ link_to('Sign up', new_user_path) } </li>"
-      links += "<li> #{ link_to('Sign in with instagram', "/oauth/connect") } </li>"
       links += "<li> #{ link_to('Sign in', login_path ) } </li>"
     end
 

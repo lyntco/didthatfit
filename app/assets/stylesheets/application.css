@@ -81,10 +81,7 @@ nav ul li form {
 }
 
 .items {
-  width: 600px;
-  margin: auto;
-  background: red;
-}
+  }
 
 .item, .user {
   display: inline-table;
@@ -133,12 +130,14 @@ nav ul li form {
 }
 
 .fitbubble {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background: #000;
   position: absolute;
   top: -5px;
   right: -5px;
+  border-radius: 40%;
+  border-bottom-left-radius: 0;
 }
 
 .fitbubble.right {

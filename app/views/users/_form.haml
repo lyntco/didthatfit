@@ -10,6 +10,8 @@
     = f.label :avatar
     = f.file_field :avatar, :class => 'form-control'
     - f.text_field :avatar_cache, :class => 'form-control'
+    = f.label :avatar, "Image From URL"
+    = f.text_field :remote_avatar_url, :class => 'form-control'
   %div.formgroup
     = f.label :name
     = f.text_field :name, :class => 'form-control'

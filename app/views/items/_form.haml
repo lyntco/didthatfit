@@ -1,13 +1,16 @@
 = form_for @item do |f|
   %div.formgroup
     = f.label :name
-    = f.text_field :name, :class => 'form-control'
+    = f.text_field :name, :class => 'form-control', :placeholder => "My awesome new..."
   %div.formgroup
-    = image_tag( @item.image_url(:thumb) )
+    %div.item
+      = image_tag( @item.image_url(:thumb) )
   %div.formgroup
     = f.label :image
     = f.file_field :image, :class => 'form-control'
     - f.text_field :image_cache, :class => 'form-control'
+    = f.label :image, "Image From URL"
+    = f.text_field :remote_image_url, :class => 'form-control'
   %div.formgroup
     = f.label :size
     = f.text_field :size, :class => 'form-control'
@@ -20,8 +23,8 @@
     = f.label(:fit_big, "Too big")
   %div.formgroup
     = f.label :brand_id
-    = f.collection_select( :brand_id, Brand.order(:name => :asc), :id, :name,:prompt => true )
-    = link_to('Add brand' , new_brand_path )
+    = f.collection_select( :brand_id, Brand.order(:name => :asc), :id, :name,:prompt => true, :class => "form-control")
+    = button_to('Add brand' , new_brand_path , "class" =>"btn btn-default")
   %div.formgroup
     = f.label :type_id
     = f.collection_select( :type_id, Type.order(:name => :asc), :id, :name,:prompt => true )

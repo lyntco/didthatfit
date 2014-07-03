@@ -8,4 +8,5 @@
     = label_tag 'password'
     = password_field_tag 'password',nil, :class => 'form-control'
   %div.formgroup
-    = submit_tag 'Login', :class =>"btn btn-default"
+    = submit_tag 'Sign in', :class =>"btn btn-default"
+    = button_to('Sign in with instagram', "/oauth/connect", :class =>"btn btn-default")

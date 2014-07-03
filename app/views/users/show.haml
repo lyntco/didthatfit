@@ -1,9 +1,6 @@
 %h2= link_to( "@" + @user.username, @user.username)
 = image_tag( @user.avatar_url(:avatar_large) )
 
--# %p
--#   = @user.email
-
 - if @user != @current_user
   - if @current_user.friends.include? @user
     = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
@@ -11,27 +8,23 @@
     = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
 
 %h3 Items
-- @user.items.order(:created_at => :desc).each do |item|
-  %div.item{:class => item.fit}
-    = link_to( user_item_path(@user.username,item.id) ) do
-      = image_tag( item.image_url(:thumb) )
-    - unless @current_user.nil?
-      - if @current_user == item.user || @current_user.is_admin?
-        %br/
-        = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
-        = button_to( 'Delete', item, :method => :delete,:form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
+%div.items.col-md-12
+  - @user.items.order(:created_at => :desc).each do |item|
+    %div.item{:class => item.fit}
+      = link_to( user_item_path(@user.username,item.id) ) do
+        = image_tag( item.image_url(:thumb) )
+      - unless @current_user.nil?
+        - if @current_user == item.user || @current_user.is_admin?
+          %br/
+          = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
+          = button_to( 'Delete', item, :method => :delete,:form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
 
 = "No items of clothing yet!" if @user.items.empty?
-
--# %h3 Outfits
--# - @user.outfits.each do |outfit|
--#   %li= link_to( outfit.id, user_outfit_path(@user.username,outfit.id) )
-
--# = "No outfits yet!" if @user.outfits.empty?
 
 %h3 Following
 - @user.friends.each do |friend|
   = link_to( "@" + friend.username, user_path( friend.username ))
+
 = "Not following anybody yet!" if @user.friends.empty?
 
 %h3 Followed by

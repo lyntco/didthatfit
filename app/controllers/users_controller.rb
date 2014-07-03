@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     @user = User.new user_params
     # raise params.inspect
     @user.username = @user.username.downcase # forces downcase username
-    @user.avatar = "default_icon.jpg" #gives user default icon
     if @user.save
       session[:user_id] = @user.id
       redirect_to( root_path )

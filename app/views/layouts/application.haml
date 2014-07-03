@@ -28,10 +28,10 @@
           -# %li.active
             -# %a{href: "#"} Link
           = smartnav.html_safe
-          -#%li= render :partial => '/pages/searchform'
+          %li= render :partial => '/pages/searchform'
         %form.navbar-form.navbar-left{role: "search"}
           .form-group
-            = render :partial => '/pages/searchform'
+            -# = render :partial => '/pages/searchform'
             -# %input.form-control{placeholder: "Search", type: "text"}/
           -# %button.btn.btn-default{type: "submit"} Submit
         %ul.nav.navbar-nav.navbar-right

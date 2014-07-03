@@ -6,6 +6,8 @@
     = f.label :image
     = f.file_field :image, :class => 'form-control'
     - f.text_field :image_cache, :class => 'form-control'
+    = f.label :image, "Image From URL"
+    = f.text_field :remote_image_url, :class => 'form-control'
   %div.formgroup
     = f.label :website
     = f.text_field :website, :class => 'form-control'
