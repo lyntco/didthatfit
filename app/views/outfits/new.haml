@@ -9,7 +9,10 @@
 %h2= "You need to wear things that add up to #{ @offset.to_i } degrees if you're going outside"
 
 - @outfit_for_today.each do |item|
-  = item.name
+  = link_to( user_item_path( @current_user.username, item.id ) ) do
+    = image_tag( item )
+
+= @adjusting_clo.round(2)
 
 = @clos
 

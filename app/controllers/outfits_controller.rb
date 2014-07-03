@@ -20,6 +20,7 @@ class OutfitsController < ApplicationController
     @offset = 31 - @temp #find how many degrees your clothes need to make up for ambient body temp
     @p = 60 # the heat your body generates on avg
     @r = (@offset/60).round(2) # find n clos needed
+    @adjusting_clo = @r
 
     @outfit = Outfit.new
 
@@ -31,32 +32,60 @@ class OutfitsController < ApplicationController
     onepiece = Category.find_by( name: 'One Piece')
     # will get pants more warm than 0.1
     # @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w').select {|i| i.w > 0.1}
+    @torso = @current_user.items.joins(:type).where("types.category_id = #{ tops.id }").select('types.warmth as w')
+    @torso_out = @current_user.items.joins(:type).where("types.category_id = #{ outerwear.id }").select('types.warmth as w')
     @legs = @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w')
-    raise @legs.map {|i| i.w.to_s }
-    # binding.pry
+    @feet = @current_user.items.joins(:type).where("types.category_id = #{ footwear.id }").select('types.warmth as w')
+    @acc = @current_user.items.joins(:type).where("types.category_id = #{ accessories.id }").select('types.warmth as w')
+    @whole_body = @current_user.items.joins(:type).where("types.category_id = #{ onepiece.id }").select('types.warmth as w')
+    # raise @legs.map {|i| i.w.to_s }
     @outfit_for_today = []
-    @outfit_for_today << (@feet.empty? ? "default_feet" : @feet.sample) #puts random shoes in outfit
-    @outfit_for_today << (@legs.empty? ? "default_legs" : @legs.sample)
-    @outfit_for_today << (@torso.empty? ? "default_torso" : @torso.sample)
-    @clos = 0.0
-    # raise "dsas"
-    @outfit_for_today.each do |item|
-      @clos += item.type.warmth
+
+    if @feet.load.any?
+      item = @feet.select {|i| i.w < @adjusting_clo }.sample
+      @outfit_for_today << item
+      @adjusting_clo -= item.w
+    else
+      @outfit_for_today << "default_feet"
     end
-    # binding.pry
-    # use blackjack logic?
+
+    if @legs.load.any?
+      item = @legs.select {|i| i.w < @adjusting_clo }.sample
+      @outfit_for_today << item
+      @adjusting_clo -= item.w
+    else
+      @outfit_for_today << "default_legs"
+    end
+
+    if @torso.load.any?
+      item = @torso.select {|i| i.w < @adjusting_clo }.sample
+      @outfit_for_today << item
+      @adjusting_clo -= item.w
+    else
+      @outfit_for_today << "default_torso"
+    end
+
+    # if @torso_out.load.any?
+    #   item = @torso_out.select {|i| i.w < @adjusting_clo }.sample
+    #   if item
+    #     @outfit_for_today << item
+    #     @adjusting_clo -= item.w
+    #   else
+    #     @outfit_for_today << "default_outer"
+    #   end
+    # end
+
     # put into array either @whole_body or @torso + @legs
     # add @torso_out if cold, add @torso_out &/ @legs to @whole_body if cold
     # always put @feet
-
+    # @clo = sum_clo( @r,@outfit_for_today.join(",") )
   end
 
-  #   def twenty_one?(*x) #splat operator takes any number of arguments
-  #     x.inject(:+) == @r #adds all the arguments and compares them to clos needed
-  #     puts x.inject(:+) #prints the sum
-  #   end
+  # def sum_clo(r,*x) #splat operator takes any number of arguments
+    # x.inject(:+) == r #adds all the arguments and compares them to clos needed
+    # puts x.inject(:+) #prints the sum
+  # end
 
-#   twenty_one?(2,3,5,6)
 
   def edit
     @outfit = Outfit.find params[:id]
