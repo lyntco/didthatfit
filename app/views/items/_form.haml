@@ -1,35 +1,45 @@
 = form_for @item, :html => {:class => "form-horizontal", :role => "form"} do |f|
   %div.formgroup
-    = f.label :name
-    = f.text_field :name, :class => 'form-control', :placeholder => "My awesome new..."
+  - if @item.errors.any?
+    - @item.errors.full_messages.each do |msg|
+      %li= msg
   %div.formgroup
-    %div.item
-      = image_tag( @item.image_url(:thumb) )
+    = f.label :name, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :name, :class => 'form-control', :placeholder => "My awesome new..."
   %div.formgroup
-    = f.label :image
-    = f.file_field :image, :class => 'form-control'
-    - f.text_field :image_cache, :class => 'form-control'
-    = f.label :image, "Image From URL"
-    = f.text_field :remote_image_url, :class => 'form-control'
+    %div.col-sm-offset-2.col-sm-10
+      %div.item
+        = image_tag( @item.image_url(:thumb) )
   %div.formgroup
-    = f.label :size
-    = f.text_field :size, :class => 'form-control'
+    = f.label :image, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.file_field :image, :class => 'form-control'
+      - f.text_field :image_cache, :class => 'form-control'
+    = f.label :image, "Image From URL", :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :remote_image_url, :class => 'form-control'
   %div.formgroup
-    = f.radio_button(:fit, "small")
-    = f.label(:fit_small, "Too small")
-    = f.radio_button(:fit, "right")
-    = f.label(:fit_right, "Just right")
-    = f.radio_button(:fit, "big")
-    = f.label(:fit_big, "Too big")
+    = f.label :size, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :size, :class => 'form-control'
   %div.formgroup
-    = f.label :brand_id
-    = f.collection_select( :brand_id, Brand.order(:name => :asc), :id, :name,:prompt => true, :class => "form-control")
-    = button_to('Add brand' , new_brand_path , "class" =>"btn btn-default")
+    %div.col-sm-offset-2.col-sm-10
+      = f.radio_button(:fit, "small")
+      = f.label(:fit_small, "Too small")
+      = f.radio_button(:fit, "right")
+      = f.label(:fit_right, "Just right")
+      = f.radio_button(:fit, "big")
+      = f.label(:fit_big, "Too big")
   %div.formgroup
-    = f.label :type_id
-    = f.collection_select( :type_id, Type.order(:name => :asc), :id, :name,:prompt => true, :class => "form-control" )
+    = f.label :brand_id, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.collection_select( :brand_id, Brand.order(:name => :asc), :id, :name,:prompt => true, :class => "form-control")
+      = link_to('Add brand' , new_brand_path , "class" =>"btn btn-default")
   %div.formgroup
-    = f.submit :class =>"btn btn-default"
+    = f.label :type_id, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.collection_select( :type_id, Type.order(:name => :asc), :id, :name,:prompt => true, :class => "form-control" )
   %div.formgroup
-    - if @item.errors.any?
-      = @item.errors.full_messages
+    %div.col-sm-offset-2.col-sm-10
+      = f.submit :class =>"btn btn-default"

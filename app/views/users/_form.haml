@@ -1,42 +1,55 @@
-= form_for @user, :url => @user.id ? "/u/#{@user.username}" : "/u" do |f|
-
+= form_for @user,:html => {:class => "form-horizontal", :role => "form"}, :url => @user.id ? "/u/#{@user.username}" : "/u" do |f|
+  %div.formgroup
+  - if @user.errors.any?
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
   - unless @current_user.present?
     %div.formgroup
-    = f.label :username
-    = f.text_field :username, :class => 'form-control'
+    = f.label :username, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :username, :class => 'form-control'
   %div.formgroup
-    = image_tag( @user.avatar_url(:avatar) )
+    %div.col-sm-offset-2.col-sm-10
+      = image_tag( @user.avatar_url(:avatar) )
   %div.formgroup
-    = f.label :avatar
-    = f.file_field :avatar, :class => 'form-control'
-    - f.text_field :avatar_cache, :class => 'form-control'
-    = f.label :avatar, "Image From URL"
-    = f.text_field :remote_avatar_url, :class => 'form-control'
+    = f.label :avatar, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.file_field :avatar, :class => 'form-control'
+      - f.text_field :avatar_cache, :class => 'form-control'
+      = f.label :avatar, "Image From URL", :class => 'col-sm-2 control-label'
+      = f.text_field :remote_avatar_url, :class => 'form-control'
   %div.formgroup
-    = f.label :name
-    = f.text_field :name, :class => 'form-control'
+    = f.label :name, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :name, :class => 'form-control'
   %div.formgroup
-    = f.label :password
-    = f.password_field :password, :class => 'form-control'
+    = f.label :password, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.password_field :password, :class => 'form-control'
+  -# %div.formgroup
+  -#   = f.label :password_confirmation, nil, :class => 'col-sm-2 control-label'
+  -#   %div.col-sm-10
+  -#     = f.password_field :password_confirmation, :class => 'form-control'
   %div.formgroup
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, :class => 'form-control'
+    = f.label :email, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :email, :class => 'form-control'
   %div.formgroup
-    = f.label :email
-    = f.text_field :email, :class => 'form-control'
-  %div.formgroup
-    = f.label :size
-    = f.text_field :size, :class => 'form-control'
+    = f.label :size, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :size, :class => 'form-control'
   - if @current_user
     - if @current_user.instagram_id
-      = button_to("Unlink my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
+      = link_to("Unlink my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
     -else
-      = button_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
+      = link_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
 
     %div.formgroup
       Please enter your current password to save changes.
     %div.formgroup
-      = f.label :current_password
-      = f.password_field :current_password, :class => 'form-control'
-    %div.formgroup
+      = f.label :current_password, nil, :class => 'col-sm-2 control-label'
+      %div.col-sm-10
+        = f.password_field :current_password, :class => 'form-control'
+  %div.formgroup
+    %div.col-sm-offset-2.col-sm-10
       = f.submit :class =>"btn btn-default"
