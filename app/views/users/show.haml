@@ -26,8 +26,8 @@
         - unless @current_user.nil?
           - if @current_user == item.user || @current_user.is_admin?
             %br/
-            = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'modbutton')
-            = button_to( 'Delete', item, :method => :delete,:form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
+            = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'itemmodbutton')
+            = button_to( 'Delete', item, :method => :delete,:form_class => 'itemmodbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
 
   = "No items of clothing yet!" if @user.items.empty?
 %div.row
