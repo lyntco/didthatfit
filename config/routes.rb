@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :items, :except => [:new,:edit,:create,:update,:destroy]
     resources :outfits, :except => [:new,:edit,:create,:update,:destroy]
   end
+  post '/u/:id/edit' => 'users#make_admin'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/login' => 'sessions#destroy'

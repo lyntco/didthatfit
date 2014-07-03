@@ -50,7 +50,17 @@ class UsersController < ApplicationController
       flash[:notice] = "Your current password didn't match. Please try again"
       redirect_to( edit_user_path(@current_user.username) )
     end
+  end
 
+  def make_admin
+    user = User.find_by(:username => params[:id])
+    if user.is_admin?
+      user.is_admin = false
+    else
+      user.is_admin = true
+    end
+    user.save
+    redirect_to( users_path )
   end
 
   def destroy

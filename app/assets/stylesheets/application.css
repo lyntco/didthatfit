@@ -86,7 +86,7 @@ nav ul li form {
   background: red;
 }
 
-.item {
+.item, .user {
   display: inline-table;
   vertical-align: top;
   padding: .5em;
@@ -98,11 +98,34 @@ nav ul li form {
   position: relative;
 }
 
-.item:hover > .modbutton {
+.modbutton {
+  font-size: .8em;
+  position: absolute;
+  bottom: 10px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  display: none;
+}
+
+.modbutton:first-of-type {
+  left: 10px;
+}
+
+.modbutton.admin {
+  left: 43px;
+}
+
+.modbutton:last-of-type {
+  right: 10px;
+}
+
+.item:hover, .user:hover > .modbutton {
   display: inline-block;
 }
 
-.item img {
+.item img, .user img {
   border-radius: 15%;
   width: 150px;
   height: 150px;
@@ -128,25 +151,6 @@ nav ul li form {
 
 .fitbubble.small {
   background: #0000bf;
-}
-
-.item form.modbutton {
-  font-size: .8em;
-  position: absolute;
-  bottom: 10px;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  display: none;
-}
-
-.item form.modbutton:first-of-type {
-  left: 10px;
-}
-
-.item form.modbutton:last-of-type {
-  right: 10px;
 }
 
 .weathersummary {

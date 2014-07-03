@@ -35,12 +35,12 @@ class OutfitsController < ApplicationController
     onepiece = Category.find_by( name: 'One Piece')
     # will get pants more warm than 0.1
     # @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w').select {|i| i.w > 0.1}
-    @torso = @current_user.items.joins(:type).where("types.category_id = #{ tops.id }").select('types.warmth as w')
-    @torso_out = @current_user.items.joins(:type).where("types.category_id = #{ outerwear.id }").select('types.warmth as w')
-    @legs = @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w')
-    @feet = @current_user.items.joins(:type).where("types.category_id = #{ footwear.id }").select('types.warmth as w')
-    @acc = @current_user.items.joins(:type).where("types.category_id = #{ accessories.id }").select('types.warmth as w')
-    @whole_body = @current_user.items.joins(:type).where("types.category_id = #{ onepiece.id }").select('types.warmth as w')
+    @torso = @current_user.items.joins(:type).where("types.category_id = #{ tops.id }").select('types.warmth as w') if tops.present?
+    @torso_out = @current_user.items.joins(:type).where("types.category_id = #{ outerwear.id }").select('types.warmth as w') if outerwear.present?
+    @legs = @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w') if bottoms.present?
+    @feet = @current_user.items.joins(:type).where("types.category_id = #{ footwear.id }").select('types.warmth as w') if footwear.present?
+    @acc = @current_user.items.joins(:type).where("types.category_id = #{ accessories.id }").select('types.warmth as w') if accessories.present?
+    @whole_body = @current_user.items.joins(:type).where("types.category_id = #{ onepiece.id }").select('types.warmth as w') if onepiece.present?
     # raise @legs.map {|i| i.w.to_s }
     @outfit_for_today = []
 
