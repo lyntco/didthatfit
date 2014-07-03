@@ -19,7 +19,7 @@ class Item < ActiveRecord::Base
   validates :name, :presence => true
   validates :fit, :presence => true
   validates :size, :presence => true
-  # validates :type, :presence => true
+  validates :type, :presence => true
   belongs_to :user
   belongs_to :brand
   belongs_to :type

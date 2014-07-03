@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root :to => 'items#following'
   resources :brands
   resources :items, :except => [:show]
-  resources :outfits, :except => [:show,:create]
+  resources :outfits, :except => [:show,:create,:index,:edit,:update,:destroy]
 
   resources :users, :path => '/u' do
     resources :items, :except => [:new,:edit,:create,:update,:destroy]
-    resources :outfits, :except => [:new,:edit,:create,:update,:destroy]
+    # resources :outfits, :except => [:new,:edit,:create,:update,:destroy]
   end
   post '/u/:id/edit' => 'users#make_admin'
   get '/login' => 'sessions#new'
