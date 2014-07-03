@@ -1,10 +1,13 @@
-%h2=# @temp.to_s + " degrees"
+%h2= @temp.to_s + " degrees"
 
-%h2=# @summary
+%h2= @summary
 
 %p= @torso + @torso_out
 %p= @legs
+%p= @feet
 
-%h2=# "You need to wear things that add up to #{@offset} degrees if you're going outside"
+%h2= "You need to wear things that add up to #{ @offset.to_i } degrees if you're going outside"
 
 = button_to( 'Save outfit', new_outfit_path, :method => :get, :form_class => 'modbutton')
+
+%p= @r.to_s + " clos"

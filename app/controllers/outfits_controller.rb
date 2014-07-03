@@ -12,12 +12,14 @@ class OutfitsController < ApplicationController
 
   def new
     # raise params.inspect
-    # @coords = Geocoder.coordinates("sydney")
-    # @f = ForecastIO.forecast(@coords.first, @coords.last, params: { units: 'si' })
-    # @temp = @f.currently.temperature
-    # @summary = @f.currently.summary
-    # @offset = 31 - @temp
-    # @t = 31 - @p
+    @coords = Geocoder.coordinates("sydney")
+    @f = ForecastIO.forecast(@coords.first, @coords.last, params: { units: 'si' })
+    @temp = @f.currently.temperature
+    @summary = @f.currently.summary
+
+    @offset = 31 - @temp #find how many degrees your clothes need to make up for ambient body temp
+    @p = 60 # the heat your body generates on avg
+    @r = (@offset/60).round(2) # find n clos
 
     @outfit = Outfit.new
     # Category.where(:name => 'Outerwear').first.items.first.type.warmth to get warmth
@@ -32,13 +34,19 @@ class OutfitsController < ApplicationController
       @whole_body = Category.where( name: 'One Piece').first.items & @current_user.items
     end
     @outfit_for_today = []
-    # find n clos
-    # add items by random to be the closest sum of clo
     # use blackjack logic?
     # put into array either @whole_body or @torso + @legs
     # add @torso_out if cold, add @torso_out &/ @legs to @whole_body if cold
     # always put @feet
+
   end
+
+  #   def twenty_one?(*x) #splat operator takes any number of arguments
+  #     x.inject(:+) == @r #adds all the arguments and compares them to clos needed
+  #     puts x.inject(:+) #prints the sum
+  #   end
+
+#   twenty_one?(2,3,5,6)
 
   def edit
     @outfit = Outfit.find params[:id]

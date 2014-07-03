@@ -37,6 +37,7 @@ gem 'cloudinary' #cloud hosting
 
 # gem 'omniauth' # for facebook auth
 # gem 'omniauth-facebook', '1.4.0'
+gem 'instagram'
 
 gem 'rails_12factor', group: :production
 

@@ -28,4 +28,9 @@ class ApplicationController < ActionController::Base
     configuration.api_key = 'eded896de561f7d609f6e31f5d4d381b'
   end
 
+  Instagram.configure do |config|
+    config.client_id = "443fb627019a405f920e934c9c068ec4"
+    config.client_secret = "443fb627019a405f920e934c9c068ec4"
+  end
+
 end
