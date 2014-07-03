@@ -16,8 +16,9 @@ module ApplicationHelper
       # links += "<li>" + link_to('What should I wear today?', new_outfit_path) + "</li>"
       links += "<li> #{ link_to("Logout #{ @current_user.username }", login_path, :method => :delete, :data => { :confirm => "Are you sure you want to logout?" })  }</li>"
     else
-      links += "<li> #{ link_to('Sign up', new_user_path) } </li>
-      <li> #{ link_to('Sign in', login_path ) } </li>"
+      links += "<li> #{ link_to('Sign up', new_user_path) } </li>"
+      links += "<li> #{ link_to('Sign in with instagram', "/oauth/connect") } </li>"
+      links += "<li> #{ link_to('Sign in', login_path ) } </li>"
     end
     # links += "<li>" + search_field_tag("search") + "</li>"
 

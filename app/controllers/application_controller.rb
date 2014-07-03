@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user # does the method named this before any other action
 
   private
+
   def authenticate_user
     if session[:user_id].present? #instead of comparing .nil? and == "". only for rails
       @current_user = User.where(:id => session[:user_id]).first # .find throws fatal error if nothing, .where will return nil if nothing else returns array
@@ -27,6 +28,8 @@ class ApplicationController < ActionController::Base
   ForecastIO.configure do |configuration|
     configuration.api_key = 'eded896de561f7d609f6e31f5d4d381b'
   end
+
+  CALLBACK_URL = "http://localhost:3000/oauth/callback"
 
   Instagram.configure do |config|
     config.client_id = "443fb627019a405f920e934c9c068ec4"
