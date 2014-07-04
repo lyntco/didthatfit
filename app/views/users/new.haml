@@ -1,10 +1,11 @@
 %div.row
-  %h2 Sign up
+  %div.col-sm-offset-2.col-sm-10
+    %h2 Sign up
 %div.row
   = render :partial => 'form'
-%div.row
-  - if @user.errors.any?
-    %h1 ERROR
-    %ol
-      - @user.errors.full_messages.each do |msg|
-        %li= msg
+-# %div.row
+-#   - if @user.errors.any?
+-#     %h1 ERROR
+-#     %ol
+-#       - @user.errors.full_messages.each do |msg|
+-#         %li= msg

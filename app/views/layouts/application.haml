@@ -15,8 +15,9 @@
       = yield
 
       - if flash[:notice].present?
-        %div.notice
-          = flash[:notice]
+        %div.col-sm-offset-2.col-sm-10
+          %div.errors
+            = flash[:notice]
 
   %footer
     = link_to( 'About', about_path )

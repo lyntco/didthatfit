@@ -1,9 +1,14 @@
 = form_for @user,:html => {:class => "form-horizontal", :role => "form"}, :url => @user.id ? "/u/#{@user.username}" : "/u" do |f|
   %div.formgroup
-  - if @user.errors.any?
-    - @user.errors.full_messages.each do |msg|
-      %li= msg
-  - unless @current_user.present?
+    %div.col-sm-offset-2.col-sm-10
+      - if @user.errors.any?
+        %div.errors
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+  - if @current_user.present?
+    %h3= "@" + @current_user.username
+  - else
     %div.formgroup
     = f.label :username, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10
@@ -16,7 +21,8 @@
     %div.col-sm-10
       = f.file_field :avatar, :class => 'form-control'
       - f.text_field :avatar_cache, :class => 'form-control'
-      = f.label :avatar, "Image From URL", :class => 'col-sm-2 control-label'
+    = f.label :avatar, "Image From URL", :class => 'col-sm-2 control-label'
+    %div.col-sm-10
       = f.text_field :remote_avatar_url, :class => 'form-control'
   %div.formgroup
     = f.label :name, nil, :class => 'col-sm-2 control-label'
@@ -26,10 +32,10 @@
     = f.label :password, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10
       = f.password_field :password, :class => 'form-control'
-  -# %div.formgroup
-  -#   = f.label :password_confirmation, nil, :class => 'col-sm-2 control-label'
-  -#   %div.col-sm-10
-  -#     = f.password_field :password_confirmation, :class => 'form-control'
+  %div.formgroup
+    = f.label :password_confirmation, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.password_field :password_confirmation, :class => 'form-control'
   %div.formgroup
     = f.label :email, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10

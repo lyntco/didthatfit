@@ -1,5 +1,12 @@
 = form_for @brand, :html => {:class => "form-horizontal", :role => "form"} do |f|
   %div.formgroup
+    %div.col-sm-offset-2.col-sm-10
+      - if @brand.errors.any?
+        %div.errors
+          %ul
+            - @brand.errors.full_messages.each do |msg|
+              %li= msg
+  %div.formgroup
     = f.label :name, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10
       = f.text_field :name, :class => 'form-control'
