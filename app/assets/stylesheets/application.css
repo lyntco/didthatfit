@@ -68,7 +68,7 @@ a:link {
   border: 1px solid #aaa;
 }
 
-.usermodbutton, .itemmodbutton {
+.usermodbutton, .itemmodbutton, .brand.med form.itemmodbutton {
   font-size: .8em;
   position: absolute;
   bottom: 10px;
@@ -85,7 +85,7 @@ form.usermodbutton div input[type="submit"], form.itemmodbutton div input[type="
   background: -moz-radial-gradient(circle, #fff, #eee);
   background: -ms-radial-gradient(circle, #fff, #eee);
   border: 1px solid #ddd;
-  border-radius: 15%;
+  border-radius: .3em;
   /*background-color: red;*/
 }
 
@@ -104,6 +104,21 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 .itembutton:last-of-type {
 }
 
+.brand.med {
+  position: relative;
+}
+
+.brand.med form.itemmodbutton {
+  left: 10px;
+}
+
+.brand.med form.itemmodbutton:first-of-type {
+  bottom: 35px;
+}
+
+.brand.med form.itembutton:last-of-type {
+}
+
 .usermodbutton {
   right: 10px;
 }
@@ -120,7 +135,7 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   bottom: 5px;
 }
 
-.item:hover > .itemmodbutton, .item:hover > .brandbubble, .user:hover > .usermodbutton, .user:hover > .namebubble {
+.item:hover > .itemmodbutton, .item:hover > .brandbubble, .user:hover > .usermodbutton, .user:hover > .namebubble, .brand.med:hover > form.itemmodbutton {
   display: inline-block;
 }
 
@@ -138,8 +153,8 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .smallbox img {
-  width: 100%;
-  height: 100%;
+  max-width: 60px;
+  max-height: 60px;
 }
 
 .med {
@@ -149,8 +164,8 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .med img {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
 }
 
 
@@ -175,13 +190,12 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 
 .namebubble {
   width: 60px;
-  height: 60px;
-  background: #000;
+  height: 2em;
+  background: #bf0000;
   position: absolute;
   top: -5px;
-  left: 25%;
-  border-radius: 40%;
-  border-bottom-right-radius: 0;
+  left: 5px;
+  border-radius: 2em;
   overflow: hidden;
   display: none;
 }

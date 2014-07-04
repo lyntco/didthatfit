@@ -2,42 +2,42 @@
   %h2 These brands run true to size
 %div.row
   - @fit.each do |brand|
-    = link_to( brand_path( brand ) ) do
-      %div.brand.med
+    %div.brand.med
+      = link_to( brand_path( brand ) ) do
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
-        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
-        = button_to( 'Delete', brand, :method => :delete, :form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'itemmodbutton')
+        = button_to( 'Delete', brand, :method => :delete, :form_class => 'itemmodbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
 %div.row
   %h2 These brands run big
 %div.row
   - @big.each do |brand|
-    = link_to( brand_path( brand ) ) do
-      %div.brand.med
+    %div.brand.med
+      = link_to( brand_path( brand ) ) do
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
-        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
-        = button_to( 'Delete', brand, :method => :delete, :form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'itemmodbutton')
+        = button_to( 'Delete', brand, :method => :delete, :form_class => 'itemmodbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
 
 %div.row
   %h2 These brands run small
 %div.row
   - @small.each do |brand|
-    = link_to( brand_path( brand ) ) do
-      %div.brand.med
+    %div.brand.med
+      = link_to( brand_path( brand ) ) do
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
-        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
-        = button_to( 'Delete', brand, :method => :delete, :form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'itemmodbutton')
+        = button_to( 'Delete', brand, :method => :delete, :form_class => 'itemmodbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
 
 
 %div.row
   %h2 Other Brands
 %div.row
   - @not_sorted.each do |brand|
-    = link_to( brand_path( brand ) ) do
-      %div.brand.med
+    %div.brand.med
+      = link_to( brand_path( brand ) ) do
         = image_tag( brand.image_url(:thumb) )
       - unless @current_user.nil? || !@current_user.is_admin?
-        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'modbutton')
-        = button_to( 'Delete', brand, :method => :delete, :form_class => 'modbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})
+        = button_to( 'Edit', edit_brand_path(brand.id), :method => :get, :form_class => 'itemmodbutton')
+        = button_to( 'Delete', brand, :method => :delete, :form_class => 'itemmodbutton', :data => {:confirm => "Are you sure you want to delete #{brand.name}?"})

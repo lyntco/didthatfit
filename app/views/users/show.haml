@@ -21,6 +21,9 @@
             = link_to ( item.brand ) do
               = image_tag( item.brand.image_url(:thumb) )
         %div.fitbubble{:class => item.fit}
+          = "+" if item.fit == "big"
+          = "-" if item.fit == "small"
+          = "•" if item.fit =="right"
         = link_to( user_item_path(@user.username,item.id) ) do
           = image_tag( item.image_url(:thumb) )
         - unless @current_user.nil?
@@ -34,8 +37,10 @@
   %h3 Following
   %div.users.col-md-12
     - @user.friends.each do |friend|
-      = link_to( user_path( friend.username ) ) do
-        %div.user.smallbox
+      %div.user.smallbox
+        %div.namebubble
+          = friend.username
+        = link_to( user_path( friend.username ) ) do
           = image_tag( friend.avatar_url(:avatar) )
 
     = "Not following anybody yet!" if @user.friends.empty?
@@ -44,9 +49,10 @@
   %div.users.col-md-12
     - @followers.each do |follower|
       - found_follower = User.find_by(:id => follower.user_id )
-      %div.brandbubble
-      = link_to( user_path( found_follower.username )) do
-        %div.user.smallbox
+      %div.user.smallbox
+        %div.namebubble
+          = found_follower.username
+        = link_to( user_path( found_follower.username )) do
           = image_tag( found_follower.avatar_url(:avatar) )
 
     = "Not followed by anybody yet!" if @followers.empty?
