@@ -7,13 +7,13 @@
             - @item.errors.full_messages.each do |msg|
               %li= msg
   %div.formgroup
-    = f.label :name, nil, :class => 'col-sm-2 control-label'
-    %div.col-sm-10
-      = f.text_field :name, :class => 'form-control', :placeholder => "My awesome new..."
-  %div.formgroup
     %div.col-sm-offset-2.col-sm-10
       %div.item
         = image_tag( @item.image_url(:thumb) )
+  %div.formgroup
+    = f.label :name, nil, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :name, :class => 'form-control', :placeholder => "My awesome new..."
   %div.formgroup
     = f.label :image, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10

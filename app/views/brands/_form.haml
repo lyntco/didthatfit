@@ -6,6 +6,8 @@
           %ul
             - @brand.errors.full_messages.each do |msg|
               %li= msg
+    %div.col-sm-offset-2.col-sm-10
+      = image_tag( @brand.image_url(:thumb), :class => "brand")
   %div.formgroup
     = f.label :name, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10

@@ -7,7 +7,8 @@
             - @user.errors.full_messages.each do |msg|
               %li= msg
   - if @current_user.present?
-    %h3= "@" + @current_user.username
+    %div.col-sm-offset-2.col-sm-10
+      %h3= "@" + @current_user.username
   - else
     %div.formgroup
     = f.label :username, nil, :class => 'col-sm-2 control-label'
@@ -15,7 +16,7 @@
       = f.text_field :username, :class => 'form-control'
   %div.formgroup
     %div.col-sm-offset-2.col-sm-10
-      = image_tag( @user.avatar_url(:avatar) )
+      = image_tag( @user.avatar_url(:avatar), :class => "user")
   %div.formgroup
     = f.label :avatar, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10
@@ -52,7 +53,8 @@
         = link_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
 
     %div.formgroup
-      Please enter your current password to save changes.
+      %div.col-sm-offset-2.col-sm-10
+        Please enter your current password to save changes.
     %div.formgroup
       = f.label :current_password, nil, :class => 'col-sm-2 control-label'
       %div.col-sm-10
