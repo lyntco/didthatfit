@@ -51,6 +51,10 @@ a:link {
   /*margin-top: -5em;*/
 }
 
+div.row {
+  padding-bottom: 2em;
+}
+
 .items {
   }
 
@@ -73,6 +77,14 @@ a:link {
   width: 120px;
   height: 120px;
   vertical-align: middle;
+}
+
+form.modbutton {
+  display: inline-block;
+}
+
+form.modbutton button {
+  display: inline-block;
 }
 
 .usermodbutton, .itemmodbutton, .brand.med form.itemmodbutton {
