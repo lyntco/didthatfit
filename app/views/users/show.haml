@@ -1,16 +1,16 @@
 %div.row
   %h2= link_to( "@" + @user.username, @user.username)
 %div.row
-  = image_tag( @user.avatar_url(:avatar_large) )
-%div.row
-  - if @current_user && @user != @current_user
-    - if @current_user.friends.include? @user
-      = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
-    - else
-      = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
-%div.row
-  %h3 Top brands
-  = @brands.name
+  %div.col-md-4
+    = image_tag( @user.avatar_url(:avatar_large) )
+    - if @current_user && @user != @current_user
+      - if @current_user.friends.include? @user
+        = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete)
+      - else
+        = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post)
+  %div.col-md-8
+    %h3 Top brands
+    = @brands.name
 %div.row
   %h3 Items
   %div.items.col-md-12
@@ -39,7 +39,7 @@
     - @user.friends.each do |friend|
       %div.user.smallbox
         %div.namebubble
-          = friend.username
+          = link_to( "@" + friend.username, user_path( friend.username ))
         = link_to( user_path( friend.username ) ) do
           = image_tag( friend.avatar_url(:avatar) )
 
@@ -51,7 +51,7 @@
       - found_follower = User.find_by(:id => follower.user_id )
       %div.user.smallbox
         %div.namebubble
-          = found_follower.username
+          = link_to( "@" + found_follower.username, user_path( found_follower.username ))
         = link_to( user_path( found_follower.username )) do
           = image_tag( found_follower.avatar_url(:avatar) )
 

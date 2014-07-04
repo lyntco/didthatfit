@@ -149,7 +149,7 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 .smallbox {
   width: 70px;
   height: 70px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .smallbox img {
@@ -189,15 +189,17 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .namebubble {
-  width: 60px;
-  height: 2em;
-  background: #bf0000;
+  /*width: 60px;*/
+  /*height: 2em;*/
+  /*line-height: 2em;*/
+  background: #bbb;
   position: absolute;
   top: -5px;
-  left: 5px;
+  left: -5px;
   border-radius: 2em;
   overflow: hidden;
   display: none;
+  padding: .4em;
 }
 
 .fitbubble {
