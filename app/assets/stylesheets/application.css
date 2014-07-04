@@ -68,6 +68,13 @@ a:link {
   border: 1px solid #aaa;
 }
 
+.item img, .user img, .brand img {
+  border-radius: 15%;
+  width: 120px;
+  height: 120px;
+  vertical-align: middle;
+}
+
 .usermodbutton, .itemmodbutton, .brand.med form.itemmodbutton {
   font-size: .8em;
   position: absolute;
@@ -137,13 +144,6 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 
 .item:hover > .itemmodbutton, .item:hover > .brandbubble, .user:hover > .usermodbutton, .user:hover > .namebubble, .brand.med:hover > form.itemmodbutton {
   display: inline-block;
-}
-
-.item img, .user img, .brand img {
-  border-radius: 15%;
-  width: 120px;
-  height: 120px;
-  vertical-align: middle;
 }
 
 .smallbox {
