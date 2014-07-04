@@ -26,6 +26,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Quicksand', sans-serif;
 }
 
+img {
+  border-radius: 2em;
+}
+
 a:link {
   text-decoration: none;
 }
@@ -207,9 +211,6 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .namebubble {
-  /*width: 60px;*/
-  /*height: 2em;*/
-  /*line-height: 2em;*/
   background: #bbb;
   position: absolute;
   top: -5px;
