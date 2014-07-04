@@ -11,13 +11,14 @@
 
   %div.container
     %div#content
+      %div.col-md-12
 
-      = yield
+        = yield
 
-      - if flash[:notice].present?
-        %div.col-sm-offset-2.col-sm-10
-          %div.errors
-            = flash[:notice]
+        - if flash[:notice].present?
+          %div.col-sm-offset-2.col-sm-10
+            %div.errors
+              = flash[:notice]
 
   %footer
     = link_to( 'About', about_path )

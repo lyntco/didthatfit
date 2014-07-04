@@ -58,10 +58,10 @@ a:link {
   display: inline-table;
   vertical-align: top;
   padding: .5em;
-  margin: .2em;
+  margin: .7em;
   background: #ddd;
-  width: 165px;
-  max-height: 165px;
+  width: 130px;
+  max-height: 130px;
   text-align: center;
   position: relative;
   border-radius: 5%;
@@ -141,8 +141,8 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 
 .item img, .user img, .brand img {
   border-radius: 15%;
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   vertical-align: middle;
 }
 
@@ -232,6 +232,10 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 
 .field_with_errors input {
   background-color: #aae7ff;
+}
+
+.field_with_errors + label {
+  display: inline-block;
 }
 
 .errors {
