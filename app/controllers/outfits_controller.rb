@@ -44,28 +44,23 @@ class OutfitsController < ApplicationController
     # raise @legs.map {|i| i.w.to_s }
     @outfit_for_today = []
 
-    if @feet.load.any?
-      item = @feet.select {|i| i.w < @adjusting_clo }.sample
+    if @feet.load.any? && item = @feet.select {|i| i.w < @adjusting_clo }.sample
       @outfit_for_today << item
       @adjusting_clo -= item.w
     else
       @outfit_for_today << "default_feet"
     end
 
-    if @legs.load.any?
-      item = @legs.select {|i| i.w < @adjusting_clo }.sample
+    if @legs.load.any? && item = @legs.select {|i| i.w < @adjusting_clo }.sample
       @outfit_for_today << item
       @adjusting_clo -= item.w
     else
       @outfit_for_today << "default_legs"
     end
 
-    if @torso.load.any?
-      item = @torso.select {|i| i.w < @adjusting_clo }.sample
-      if item
+    if @torso.load.any? && item = @torso.select {|i| i.w < @adjusting_clo }.sample
       @outfit_for_today << item
       @adjusting_clo -= item.w
-      end
     else
       @outfit_for_today << "default_torso"
     end

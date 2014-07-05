@@ -3,7 +3,7 @@
 %div.items
   - @outfit_for_today.reverse.each do |item|
     %div.item
-      = image_tag( item.image_url(:thumb) )
+      = (item.is_a? Item) ? image_tag( item.image_url(:thumb) ) : item
 
 = @adjusting_clo.round(2)
 
