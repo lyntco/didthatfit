@@ -51,7 +51,7 @@ a:link {
 #content {
   max-width: 95%;
   margin: auto;
-  padding: 0 5em 5em 5em;
+  /*padding: 0 5em 5em 5em;*/
   /*margin-top: -5em;*/
 }
 
