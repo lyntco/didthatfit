@@ -51,8 +51,6 @@ a:link {
 #content {
   max-width: 95%;
   margin: auto;
-  /*padding: 0 5em 5em 5em;*/
-  /*margin-top: -5em;*/
 }
 
 div.row {
@@ -190,10 +188,10 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 .brandbubble {
   width: 60px;
   height: 60px;
-  background: #000;
+  /*background: #000;*/
   position: absolute;
-  top: -5px;
-  left: -5px;
+  top: -15px;
+  left: -15px;
   border-radius: 40%;
   border-bottom-right-radius: 0;
   overflow: hidden;

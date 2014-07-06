@@ -5,6 +5,8 @@
   %div.users.col-md-12
     - @users.each do |user|
       %div.user
+        %div.namebubble
+          = link_to( "@" + user.username, user_path( user.username ))
         = link_to( user_path(user.username) ) do
           = image_tag( user.avatar_url(:avatar_large) )
         - unless @current_user.nil? || !@current_user.is_admin?

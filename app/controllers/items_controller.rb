@@ -56,7 +56,11 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find params[:id]
     @item.update( item_params )
-    redirect_to( user_path(@current_user.username) )
+    if @current_user.is_admin? or @current_user.items.include? @item
+      redirect_to( user_path( @item.user.username ) )
+    else
+      redirect_to( user_path(@current_user.username) )
+    end
   end
 
   def destroy

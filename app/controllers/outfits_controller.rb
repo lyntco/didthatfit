@@ -41,14 +41,15 @@ class OutfitsController < ApplicationController
     @feet = @current_user.items.joins(:type).where("types.category_id = #{ footwear.id }").select('types.warmth as w') if footwear.present?
     @acc = @current_user.items.joins(:type).where("types.category_id = #{ accessories.id }").select('types.warmth as w') if accessories.present?
     @whole_body = @current_user.items.joins(:type).where("types.category_id = #{ onepiece.id }").select('types.warmth as w') if onepiece.present?
-    # raise @legs.map {|i| i.w.to_s }
     @outfit_for_today = []
+    # raise @legs.map {|i| i.w.to_s }
 
     if @feet.load.any? && item = @feet.select {|i| i.w < @adjusting_clo }.sample
       @outfit_for_today << item
       @adjusting_clo -= item.w
     else
-      @outfit_for_today << "default_feet"
+      # raise
+      @outfit_for_today << "default_legs"
     end
 
     if @legs.load.any? && item = @legs.select {|i| i.w < @adjusting_clo }.sample

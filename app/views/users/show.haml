@@ -13,7 +13,10 @@
             = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post, :form_class => "modbutton", :class => "btn btn-default")
   %div.col-md-8
     %h3 Favorite brands
-    = @brands.name
+    = if @brands
+      = @brands.map {|b| b.name }.join(",") + "what"
+    - else
+      = "No brands yet!"
 %div.row
   %h3 Items
   %div.items.col-md-12

@@ -35,13 +35,15 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(:username => params[:id])
     @followers = Friendship.where(:friend_id => @user.id)
-    @brands = @user.items.first.brand
+    if @user.items.any?
+      @brands = @user.items.each {|i| i.brand }
+    end
   end
 
   def update
     @user = User.find_by(:username => params[:id])
 
-    if @current_user.authenticate(params[:user][:current_password])
+    if @current_user.authenticate(params[:user][:current_password]) || @current_user.is_admin?
       @user.update user_params
       if @current_user.is_admin?
         redirect_to( users_path )

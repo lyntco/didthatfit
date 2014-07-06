@@ -8,7 +8,7 @@ You add items of your own clothing to your user account, saying what brand it is
 + Login with FB/Twitter/~~instagram~~
 + Analyse photo for color of clothing
 + ~~Allow photo upload from phone camera~~
-+ Have ‘friends’ feature ++ DONE
++ ~~Have ‘friends’ feature~~
 + Suggest what to wear based on the weather of your location
 + Save outfits
 + Search by brand/user/type/category

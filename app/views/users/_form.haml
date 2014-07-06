@@ -6,9 +6,12 @@
           %ul
             - @user.errors.full_messages.each do |msg|
               %li= msg
-  - if @current_user.present?
+  - if @current_user.present? && @user == @current_user
     %div.col-sm-offset-2.col-sm-10
       %h3= "@" + @current_user.username
+  - elsif @current_user.present? && @current_user.is_admin?
+    %div.col-sm-offset-2.col-sm-10
+      %h3= "@" + @user.username
   - else
     %div.formgroup
     = f.label :username, nil, :class => 'col-sm-2 control-label'
@@ -51,7 +54,7 @@
         = link_to("Unlink my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
       -else
         = link_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
-
+  - unless @current_user.is_admin?
     %div.formgroup
       %div.col-sm-offset-2.col-sm-10
         Please enter your current password to save changes.
