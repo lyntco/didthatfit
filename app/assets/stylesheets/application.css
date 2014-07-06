@@ -158,7 +158,6 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .item:hover > .itemmodbutton, .item:hover > .brandbubble, .user:hover > .usermodbutton, .user:hover > .namebubble, .brand.med:hover > form.itemmodbutton {
-  /*display: inline-block;*/
   opacity: 1;
 }
 

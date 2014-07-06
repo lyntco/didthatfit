@@ -13,8 +13,9 @@
             = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post, :form_class => "modbutton", :class => "btn btn-default")
   %div.col-md-8
     %h3 Favorite brands
-    = if @brands
-      = @brands.map {|b| b.name }.join(",") + "what"
+    - if @brands
+      - @brands.each do |i|
+        = link_to( i.brand.name, brand_path(i.brand.id))
     - else
       = "No brands yet!"
 %div.row
