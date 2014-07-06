@@ -1,5 +1,10 @@
 %div.row
   %h2= link_to( "@" + @user.username, @user.username)
+- if @current_user && @current_user.is_admin?
+  %div.row
+    %div.col-md-12
+      = button_to( 'Delete', @user, :method => :delete, :data => {:confirm => "Are you sure you want to delete #{ @user.name}?"}, :form_class => "modbutton", :class => "btn btn-default")
+      = button_to( 'Edit', edit_user_path( @user.username ), :method => :get, :form_class => "modbutton", :class => "btn btn-default")
 %div.row
   %div.col-md-4
     %div.row
