@@ -54,7 +54,7 @@
         = button_to("Unlink my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
       -else
         = button_to("Link my instagram", '/oauth/connect', :method => "get", :class => "btn btn-default")
-  - unless @current_user.is_admin?
+  - unless @current_user && @current_user.is_admin?
     %div.formgroup
       %div.col-sm-offset-2.col-sm-10
         Please enter your current password to save changes.

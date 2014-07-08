@@ -22,7 +22,7 @@ class OutfitsController < ApplicationController
 
     @offset = 31 - @temp #find how many degrees your clothes need to make up for ambient body temp
     @p = 60 # the heat your body generates on avg
-    @r = (@offset/60).round(2) # find n clos needed
+    @r = (@offset/@p).round(2) # find n clos needed
     @adjusting_clo = @r
 
     @outfit = Outfit.new
@@ -73,17 +73,7 @@ class OutfitsController < ApplicationController
         @outfit_for_today << "default_outer"
     end
 
-    # put into array either @whole_body or @torso + @legs
-    # add @torso_out if cold, add @torso_out &/ @legs to @whole_body if cold
-    # always put @feet
-    # @clo = sum_clo( @r,@outfit_for_today.join(",") )
   end
-
-  # def sum_clo(r,*x) #splat operator takes any number of arguments
-    # x.inject(:+) == r #adds all the arguments and compares them to clos needed
-    # puts x.inject(:+) #prints the sum
-  # end
-
 
   def edit
     @outfit = Outfit.find params[:id]
