@@ -26,15 +26,15 @@ class ApplicationController < ActionController::Base
   end
 
   ForecastIO.configure do |configuration|
-    configuration.api_key = 'eded896de561f7d609f6e31f5d4d381b'
+    configuration.api_key = ENV['FORECAST_API']
   end
 
-  CALLBACK_URL = "http://localhost:3000/oauth/callback" if Rails.env.development?
-  CALLBACK_URL = "http://didthatfit.herokuapp.com/oauth/callback" if Rails.env.production?
+  # CALLBACK_URL = "http://" + request.host_with_port + "oauth/callback" # if Rails.env.development?
+  # CALLBACK_URL = "http://didthatfit.herokuapp.com/oauth/callback" if Rails.env.production?
 
   Instagram.configure do |config|
-    config.client_id = "443fb627019a405f920e934c9c068ec4"
-    config.client_secret = "771185a71c734b319e85a835c172b817"
+    config.client_id = ENV['INSTAGRAM_CLIENT_ID']
+    config.client_secret = ENV['INSTAGRAM_SECRET']
   end
 
 end

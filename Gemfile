@@ -41,6 +41,7 @@ gem 'instagram'
 gem 'httparty'
 
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'dotenv-rails', group: :development
 
 gem 'rails_12factor', group: :production
 

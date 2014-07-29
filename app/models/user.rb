@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
   has_many :outfits
   has_many :friendships, :dependent => :destroy
   has_many :friends, :through => :friendships
+
+  def to_param
+    username
+  end
 end

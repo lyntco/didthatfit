@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def instagram
-    redirect_to(Instagram.authorize_url(:redirect_uri => CALLBACK_URL))
+    redirect_to(Instagram.authorize_url(:redirect_uri => callback_url))
   end
 
   def instagram_callback
-    response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL) # => a hash inside a hash {:access_token=> "",:user => {:id => "", :username => ""} }
+    response = Instagram.get_access_token(params[:code], :redirect_uri => callback_url) # => a hash inside a hash {:access_token=> "",:user => {:id => "", :username => ""} }
     session[:access_token] = response.access_token
     already_linked_user = User.find_by(:instagram_id => response.user.id)
     if session[:user_id].nil? && already_linked_user #if signed out and linked w/ instagram
@@ -48,6 +48,11 @@ class SessionsController < ApplicationController
     session[:instagram_id] = nil
 
     redirect_to root_path
+  end
+
+  private
+  def callback_url
+    "http://" + request.host_with_port + "oauth/callback"
   end
 
 end

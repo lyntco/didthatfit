@@ -11,67 +11,34 @@ class OutfitsController < ApplicationController
   end
 
   def new
-    # raise params.inspect
-    @ip_location = request.location
-    # raise
-    @coords = Geocoder.coordinates( @ip_location.city ) if Rails.env.production?
-    @coords = Geocoder.coordinates( 'sydney' ) if Rails.env.development?
-    @f = ForecastIO.forecast(@coords.first, @coords.last, params: { units: 'si' })
-    @temp = @f.currently.temperature
-    @summary = @f.currently.summary
-
-    @offset = 31 - @temp #find how many degrees your clothes need to make up for ambient body temp
-    @p = 60 # the heat your body generates on avg
-    @r = (@offset/@p).round(2) # find n clos needed
+    @temp, @summary = weather_and_summary
+    offset = 31 - @temp #find how many degrees your clothes need to make up for ambient body temp
+    p = 60 # the heat your body generates on avg
+    @r = (offset/p).round(2) # find n clos needed
     @adjusting_clo = @r
 
-    @outfit = Outfit.new
-
-    tops = Category.find_by(:name => 'Tops' )
-    outerwear = Category.find_by(:name => 'Outerwear' )
-    bottoms = Category.find_by(:name => 'Bottoms' )
-    footwear = Category.find_by(:name => 'Footwear')
-    accessories = Category.find_by( name: 'Accessories' )
-    onepiece = Category.find_by( name: 'One Piece')
-    # will get pants more warm than 0.1
-    # @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w').select {|i| i.w > 0.1}
-    @torso = @current_user.items.joins(:type).where("types.category_id = #{ tops.id }").select('types.warmth as w') if tops.present?
-    @torso_out = @current_user.items.joins(:type).where("types.category_id = #{ outerwear.id }").select('types.warmth as w') if outerwear.present?
-    @legs = @current_user.items.joins(:type).where("types.category_id = #{ bottoms.id }").select('types.warmth as w') if bottoms.present?
-    @feet = @current_user.items.joins(:type).where("types.category_id = #{ footwear.id }").select('types.warmth as w') if footwear.present?
-    @acc = @current_user.items.joins(:type).where("types.category_id = #{ accessories.id }").select('types.warmth as w') if accessories.present?
-    @whole_body = @current_user.items.joins(:type).where("types.category_id = #{ onepiece.id }").select('types.warmth as w') if onepiece.present?
+    # @outfit = Outfit.new
     @outfit_for_today = []
+
+    my_items = @current_user.items.group_by { |item| item.type.category.name }
+
+    {'Footwear' => 'feet','Bottoms' => 'legs','Tops' => 'torso','Outerwear' => 'torso_out'}.each do |category,label|
+      item, adjusting = remove_clo( (my_items[category] || []), label, @adjusting_clo)
+      @outfit_for_today << item
+      @adjusting_clo -= adjusting
+    end
     # raise @legs.map {|i| i.w.to_s }
 
-    if @feet.load.any? && item = @feet.select {|i| i.w < @adjusting_clo }.sample
-      @outfit_for_today << item
-      @adjusting_clo -= item.w
-    else
-      # raise
-      @outfit_for_today << "default_feet"
-    end
-
-    if @legs.load.any? && item = @legs.select {|i| i.w < @adjusting_clo }.sample
-      @outfit_for_today << item
-      @adjusting_clo -= item.w
-    else
-      @outfit_for_today << "default_legs"
-    end
-
-    if @torso.load.any? && item = @torso.select {|i| i.w < @adjusting_clo }.sample
-      @outfit_for_today << item
-      @adjusting_clo -= item.w
-    else
-      @outfit_for_today << "default_torso"
-    end
-
-    if @torso_out.load.any? && item = @torso_out.select {|i| i.w < @adjusting_clo }.sample
-        @outfit_for_today << item
-        @adjusting_clo -= item.w
-    else
-        @outfit_for_today << "default_outer"
-    end
+    # [
+    #   [@feet,'feet'],
+    #   [@legs,'legs'],
+    #   [@torso,'torso'],
+    #   [@torso_out,'torso_out'],
+    # ].each do |(value,name)|
+    #   item, adjusting = remove_clo(value,name)
+    #   @outfit_for_today << item
+    #   @adjusting_clo -= adjusting
+    # end
 
   end
 
@@ -98,6 +65,20 @@ class OutfitsController < ApplicationController
   private
   def outfit_params
     params.require(:outfit).permit( :name, :items )
+  end
+
+  def remove_clo(area, name, adjusting)
+    if area.any? && item = area.select {|i| i.warmth < adjusting }.sample
+        [item, item.warmth]
+    else
+        ["default_#{name}", 0]
+    end
+  end
+
+  def weather_and_summary
+    coords = Geocoder.coordinates( 'sydney' )
+    f = ForecastIO.forecast(coords.first, coords.last, params: { units: 'si' })
+    [f.currently.temperature, f.currently.summary]
   end
 
 end
