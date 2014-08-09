@@ -18,10 +18,8 @@ class SessionsController < ApplicationController
       @current_user.save
       redirect_to( edit_user_path( @current_user.username) )
     elsif @current_user && already_linked_user # to unlink instagram
-      # binding.pry
       @current_user.instagram_id = nil
       @current_user.save
-      # raise "skdjalksdj"
       redirect_to( edit_user_path( @current_user.username) )
     else
       session[:instagram_id] = response.user.id
@@ -30,20 +28,17 @@ class SessionsController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     user = User.find_by(:username => params[:username])
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id # session is a private hash rails uses
       redirect_to root_path
     else
-      # flash notice
       flash[:notice] = "Invalid login. Please try again"
       redirect_to login_path
     end
   end
 
   def destroy
-    # raise params.inspect
     session[:user_id] = nil
     session[:instagram_id] = nil
 

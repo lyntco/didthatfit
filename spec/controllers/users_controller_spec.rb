@@ -35,6 +35,10 @@ RSpec.describe UsersController, :type => :controller do
 
   end
 
+  describe 'GET /u/new' do
+
+  end
+
   describe 'POST /u' do
     describe 'with a valid input' do
       before do
@@ -80,7 +84,7 @@ RSpec.describe UsersController, :type => :controller do
 
   end
 
-  describe 'PUT /u' do
+  describe 'PUT /u/:id' do
     describe 'updating user info' do
       before do
         post :create, {:user => {:username => "user1", :password => 'chicken', :email => "user1@test.com"} }
