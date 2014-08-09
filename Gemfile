@@ -42,6 +42,7 @@ gem 'httparty'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'dotenv-rails', group: :development
+gem 'rspec-rails'
 
 gem 'rails_12factor', group: :production
 
@@ -49,6 +50,10 @@ group :development do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'minitest'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
 end
 
 # Use ActiveModel has_secure_password
