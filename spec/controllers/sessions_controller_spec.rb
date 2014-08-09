@@ -21,6 +21,9 @@ RSpec.describe SessionsController, :type => :controller do
   end
 
   describe 'DELETE /login' do
+    it 'should log the user out' do
+
+    end
 
   end
 
