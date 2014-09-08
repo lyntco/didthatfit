@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(:username => params[:id])
 
+    # raise params.inspect
     if @current_user.authenticate(params[:user][:current_password]) || @current_user.is_admin?
       @user.update user_params
       if @current_user.is_admin?
@@ -89,7 +90,8 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :name, :avatar, :avatar_cache, :remote_avatar_url, :password, :password_confirmation, :size, :email)
+    params.require(:user).permit(:username, :name, :avatar, :avatar_cache, :password, :password_confirmation, :size, :email, :shoe_size, :height, :bust, :waist, :hips)
+    # params.require(:user).permit(:username, :name, :avatar, :avatar_cache, :remote_avatar_url, :password, :password_confirmation, :size, :email, :shoe_size, :height, :bust, :waist, :hips)
   end
 
 end

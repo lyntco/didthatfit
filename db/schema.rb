@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703075121) do
+ActiveRecord::Schema.define(version: 20140908062939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,11 @@ ActiveRecord::Schema.define(version: 20140703075121) do
     t.datetime "updated_at"
     t.boolean  "is_admin",        default: false
     t.string   "instagram_id"
+    t.integer  "shoe_size"
+    t.integer  "bust"
+    t.integer  "hips"
+    t.integer  "waist"
+    t.integer  "height"
   end
 
 end

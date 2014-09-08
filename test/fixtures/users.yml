@@ -14,6 +14,11 @@
 #  updated_at      :datetime
 #  is_admin        :boolean          default(FALSE)
 #  instagram_id    :string(255)
+#  shoe_size       :integer
+#  bust            :integer
+#  hips            :integer
+#  waist           :integer
+#  height          :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

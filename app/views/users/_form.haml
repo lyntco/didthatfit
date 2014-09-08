@@ -25,9 +25,9 @@
     %div.col-sm-10
       = f.file_field :avatar, :class => 'form-control'
       - f.text_field :avatar_cache, :class => 'form-control'
-    = f.label :avatar, "Image From URL", :class => 'col-sm-2 control-label'
-    %div.col-sm-10
-      = f.text_field :remote_avatar_url, :class => 'form-control'
+    =# f.label :avatar, "Image From URL", :class => 'col-sm-2 control-label'
+    -# %div.col-sm-10
+    -#   = f.text_field :remote_avatar_url, :class => 'form-control'
   %div.formgroup
     = f.label :name, nil, :class => 'col-sm-2 control-label'
     %div.col-sm-10
@@ -45,9 +45,29 @@
     %div.col-sm-10
       = f.text_field :email, :class => 'form-control'
   %div.formgroup
-    = f.label :size, nil, :class => 'col-sm-2 control-label'
+    = f.label :size, :class => 'col-sm-2 control-label'
     %div.col-sm-10
       = f.text_field :size, :class => 'form-control'
+  %div.formgroup
+    = f.label :bust, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :bust, :class => 'form-control'
+  %div.formgroup
+    = f.label :waist, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :waist, :class => 'form-control'
+  %div.formgroup
+    = f.label :hips, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :hips, :class => 'form-control'
+  %div.formgroup
+    = f.label :height, :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field :height, :class => 'form-control'
+  %div.formgroup
+    = f.label "shoe_size", "Shoe size", :class => 'col-sm-2 control-label'
+    %div.col-sm-10
+      = f.text_field "shoe_size", :class => 'form-control'
   - if @current_user
     %div.col-sm-offset-2.col-sm-10
       - if @current_user.instagram_id

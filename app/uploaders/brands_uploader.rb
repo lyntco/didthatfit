@@ -43,7 +43,7 @@ class BrandsUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fit => [200, 200]
+    process :resize_to_fill => [200, 200]
   end
 
   version :display do
@@ -53,7 +53,7 @@ class BrandsUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png JPG JPEG GIF PNG)
   end
 
   # Override the filename of the uploaded files:
