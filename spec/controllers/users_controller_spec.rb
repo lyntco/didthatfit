@@ -91,11 +91,6 @@ RSpec.describe UsersController, :type => :controller do
         session[:user_id] = User.first.id
       end
 
-      it 'should log the newly sign up user in' do
-        # expect(response.status).to eq(302)
-        # expect(session[:user_id]).to eq(User.first.id)
-      end
-
       it 'should redirect to #show path after edit' do
         expect(response.status).to eq(302)
         expect(response).to redirect_to( user_path( assigns(:user).username ) )
@@ -103,7 +98,7 @@ RSpec.describe UsersController, :type => :controller do
 
       it 'should not increase number of users' do
         expect{
-          post :update, {:user => {:username => "user1", :password => 'chickenychick', :email => "user5@test.com"} }
+          put :update, {:user => {:username => "user1", :password => 'chickenychick', :email => "user5@test.com"} }
          }.to change( User, :count ).by(0)
       end
 
