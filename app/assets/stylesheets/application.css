@@ -34,7 +34,7 @@ a:link {
   text-decoration: none;
 }
 .navbar {
-  /*background-color: red;*/
+  background-color: #fff;
 }
 .container {
   padding: 0 0 5em 0;
@@ -275,6 +275,49 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 
 .formgroup > * {
   margin-bottom: 1em;
+}
+
+.about {
+  color: #fff;
+  padding-top: 2em;
+  background-image: url('landing.jpg');
+  background-repeat: no-repeat;
+  background-origin: center;
+  /*background-attachment: fixed;*/
+  background-clip: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100vw;
+  position: relative;
+  top: 6px;
+  left: -99px;
+  height: calc(100vh - 50px );
+  }
+
+.about .text {
+  margin-top: 30vh;
+  padding: 3em;
+  vertical-align: bottom;
+  background-color: rgba(0,0,0,.6)
+}
+
+.about h1, .about h2 {
+  padding-left: 1em;
+}
+
+.about p {
+  font-size: 2em;
+  padding: 1em;
+}
+
+.contact {
+  background-color: #aaa;
+}
+
+.contact .text {
+  padding: 3em;
 }
 
 footer {
