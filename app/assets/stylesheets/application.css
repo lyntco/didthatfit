@@ -357,7 +357,7 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 /*  background-image: url('contact.jpg');
   background-repeat: no-repeat;
   background-origin: center;
-  /*background-attachment: fixed;*/
+  background-attachment: fixed;
   background-clip: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
