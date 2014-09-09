@@ -16,7 +16,7 @@
 //= require_tree .
 
 $(document).ready( function(){
-  if ($('#landing') ){
+  if ($('#landing').length > 0 ){
     console.log('landing page here')
     $('#landing').appendTo('body')
     $('footer').appendTo('body')
