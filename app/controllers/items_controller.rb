@@ -10,15 +10,16 @@ class ItemsController < ApplicationController
     if @current_user
       @following = @current_user.friends # => array of friends
       @items = []
-      @items += @current_user.items
+      # @items += @current_user.items
 
         @following.each do |f|
           @items += f.items
         end
 
       @items = @items.sort_by(&:created_at).reverse
+      @fit_items = @current_user.items
       @title = "Watch list"
-      render :index
+      render :following
     else
       redirect_to( about_path )
     end
