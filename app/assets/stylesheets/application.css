@@ -18,6 +18,12 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic);
 
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
 html, body {
   font-family: 'PT Sans', sans-serif;
 }
@@ -317,7 +323,7 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   padding: 1em;
 }
 
-.contact {
+.howto {
   margin-top: -20px;
   background-color: #fff;
   min-height: 100vh;
@@ -332,9 +338,38 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   background-size: cover;
 }
 
-.contact .text {
+.howto .text {
+  /*margin-top: 30vh;*/
   text-align: center;
   padding: 10em;
+  background-color: rgba(255,255,255,.6)
+}
+
+.howto p {
+  font-size: 2em;
+  padding: .5em;
+}
+
+.contact {
+  /*margin-top: -20px;*/
+  background-color: #fff;
+  min-height: 100vh;
+/*  background-image: url('contact.jpg');
+  background-repeat: no-repeat;
+  background-origin: center;
+  /*background-attachment: fixed;*/
+  background-clip: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+}
+
+.contact .text {
+  /*margin-top: 30vh;*/
+  text-align: center;
+  padding: 10em;
+  background-color: rgba(255,255,255,.6)
 }
 
 .contact p {
