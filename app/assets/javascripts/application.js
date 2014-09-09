@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready( function(){
+  if ($('#landing') ){
+    console.log('landing page here')
+    $('#landing').appendTo('body')
+    $('footer').appendTo('body')
+    $('.container').remove()
+  }
+});

@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   delete '/follow/:id' => 'users#unfollow'
   get '/search' => 'pages#search'
   get '/about' => 'pages#about'
-  get '/contact' => 'pages#contact'
 
   get '/oauth/connect' => 'sessions#instagram'
   get '/oauth/callback' => 'sessions#instagram_callback'

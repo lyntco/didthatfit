@@ -18,10 +18,10 @@ class ItemsController < ApplicationController
 
       @items = @items.sort_by(&:created_at).reverse
       @title = "Watch list"
+      render :index
     else
-      index
+      redirect_to( about_path )
     end
-    render :index
   end
 
   def create

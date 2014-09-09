@@ -277,9 +277,14 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   margin-bottom: 1em;
 }
 
+#landing {
+  margin-top: 0;
+  /*position: absolute;*/
+}
+
 .about {
   color: #fff;
-  padding-top: 2em;
+  padding-top: 5em;
   background-image: url('landing.jpg');
   background-repeat: no-repeat;
   background-origin: center;
@@ -291,9 +296,9 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   background-size: cover;
   width: 100vw;
   position: relative;
-  top: 6px;
-  left: -99px;
-  height: calc(100vh - 50px );
+  top: -20px;
+  /*left: -99px;*/
+  min-height: calc(100vh - 50px );
   }
 
 .about .text {
@@ -313,14 +318,37 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .contact {
-  background-color: #aaa;
+  margin-top: -20px;
+  background-color: #fff;
+  min-height: 100vh;
+  background-image: url('contact.jpg');
+  background-repeat: no-repeat;
+  background-origin: center;
+  /*background-attachment: fixed;*/
+  background-clip: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .contact .text {
-  padding: 3em;
+  text-align: center;
+  padding: 10em;
+}
+
+.contact p {
+  font-size: 2em;
+  padding: .5em;
 }
 
 footer {
   width: 95%;
   text-align: center;
 }
+
+/*@media screen and (max-width: 878px){
+  .about {
+    left: -30px;
+  }
+}*/
