@@ -246,7 +246,7 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   background: #7631c3;
   position: absolute;
   color: #fff;
-  border: 1px solid #32126c;
+  /*border: 1px solid #32126c;*/
   top: -5px;
   right: -5px;
   border-radius: 40%;
@@ -259,11 +259,12 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 }
 
 .fitbubble.big {
-  /*background: #bf0000;*/
+  background: #bf0000;
+  border: none;
 }
 
 .fitbubble.small {
-  /*background: #0000bf;*/
+  background: #307beb;
 }
 
 .weathersummary {
