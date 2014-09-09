@@ -71,13 +71,13 @@ div.row {
   vertical-align: top;
   padding: .5em;
   margin: .7em;
-  background: #ddd;
+  /*background: #ddd;*/
   width: 130px;
   max-height: 130px;
   text-align: center;
   position: relative;
   border-radius: 5%;
-  border: 1px solid #aaa;
+  /*border: 1px solid #aaa;*/
 }
 
 .item img, .user img, .brand img {
@@ -163,6 +163,18 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   bottom: 5px;
 }
 
+.user-info > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+.user-info li {
+  font-size: 1.5em;
+  list-style: none;
+  /*display: inline-block;*/
+}
+
 .item:hover > .itemmodbutton, .item:hover > .brandbubble, .user:hover > .usermodbutton, .user:hover > .namebubble, .brand.med:hover > form.itemmodbutton {
   opacity: 1;
 }
@@ -231,13 +243,15 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
 .fitbubble {
   width: 30px;
   height: 30px;
-  background: #999;
+  background: #7631c3;
   position: absolute;
+  color: #fff;
+  border: 1px solid #32126c;
   top: -5px;
   right: -5px;
   border-radius: 40%;
   border-bottom-left-radius: 0;
-  font-size: 1.7em;
+  font-size: 1.6em;
 }
 
 .fitbubble.right {

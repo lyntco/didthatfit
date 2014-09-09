@@ -7,8 +7,16 @@
       = button_to( 'Edit', edit_user_path( @user.username ), :method => :get, :form_class => "modbutton", :class => "btn btn-default")
 %div.row
   %div.col-md-4
-    %div.row
+    %div.row.user-info
       = image_tag( @user.avatar_url(:avatar_large) )
+      %div.col-md-8
+        %h3 Favorite brands
+        - if @brands
+          - @brands.each do |i|
+            %li
+              = link_to( i.brand.name, brand_path(i.brand.id))
+        - else
+          = "No brands yet!"
     - if @current_user && @user != @current_user
       %div.row
         %div.col-md-4
@@ -16,13 +24,6 @@
             = button_to("Unfollow #{ @user.username }", "/follow/#{ @user.username }", :method => :delete, :form_class => "modbutton", :class => "btn btn-default")
           - else
             = button_to("Follow #{ @user.username }", "/follow/#{ @user.username }", :method => :post, :form_class => "modbutton", :class => "btn btn-default")
-  -# %div.col-md-8
-  -#   %h3 Favorite brands
-  -#   - if @brands
-  -#     - @brands.each do |i|
-  -#       = link_to( i.brand.name, brand_path(i.brand.id))
-  -#   - else
-  -#     = "No brands yet!"
 %div.row
   %h3 Items
   %div.items.col-md-12
