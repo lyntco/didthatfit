@@ -2,12 +2,29 @@
   %h2 Search results
 %div.row
   - if params[:search] != ""
-    %h3 You searched for "#{ params[:search] }" for the following "#{@results.length}" results:
-    %ul
+    %h3= "You searched for '#{ params[:search] }' for the following " + pluralize( @results.length, "result") + ":"
+    %div
       - @results.each do |result|
-        %li
-          = link_to(result.name, user_item_path( result.user, result.id ) ) if result.is_a? Item
+        %h2
+          =# link_to(result.name, user_item_path( result.user, result.id ) ) if result.is_a? Item
+          =# link_to(result.username, user_path( result.username ) ) if result.is_a? User
           = link_to(result.name, result) if result.is_a? Brand
-          = link_to(result.username, user_path( result.username ) ) if result.is_a? User
+
+        - result.items.each do |item|
+          %p
+            %div.item{:class => item.fit}
+              - if item.brand
+                %div.brandbubble
+                  = link_to ( item.brand) do
+                    = image_tag( item.brand.image_url(:thumb) )
+              %div.fitbubble{:class => item.fit}
+                = "+" if item.fit == "big"
+                = "-" if item.fit == "small"
+                = "•" if item.fit =="right"
+              = link_to( user_item_path( item.user.username,item.id) ) do
+                = image_tag( item.image_url(:thumb) )
+              - unless @current_user.nil? || !@current_user.is_admin?
+                = button_to( 'Edit', edit_item_path(item.id), :method => :get, :form_class => 'itemmodbutton')
+                = button_to( 'Delete', item, :method => :delete, :form_class => 'itemmodbutton', :data => {:confirm => "Are you sure you want to delete #{item.name}?"})
   - else
     %h3 You didn't enter anything! Please try again.
