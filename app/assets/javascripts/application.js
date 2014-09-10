@@ -23,6 +23,7 @@ $(document).ready( function(){
     $('.container').remove()
 
     $('.about').css('height', window.innerHeight - 50);
+    $('.about .text').css('margin-top', window.innerHeight * 30/100);
     $('.howto').css('height', window.innerHeight);
   }
 });
