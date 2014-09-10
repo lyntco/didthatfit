@@ -21,5 +21,8 @@ $(document).ready( function(){
     $('#landing').appendTo('body')
     $('footer').appendTo('body')
     $('.container').remove()
+
+    $('.about').css('height', window.innerHeight - 50);
+    $('.howto').css('height', window.innerHeight);
   }
 });
