@@ -316,7 +316,7 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  width: 100vw;
+  width: 100%;
   position: relative;
   top: -20px;
   /*left: -99px;*/
