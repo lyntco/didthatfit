@@ -163,9 +163,10 @@ form.usermodbutton div input[type="submit"]:hover, form.itemmodbutton div input[
   bottom: 5px;
 }
 
-.user-info > * {
+.user-info > div {
   display: inline-block;
   vertical-align: top;
+  float: none;
 }
 
 
