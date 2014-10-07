@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: ENV['GMAIL_EMAIL']
+  default from: 'strawww@gmail.com'
 
   def welcome_email(user)
     @user = user
