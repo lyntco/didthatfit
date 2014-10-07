@@ -40,6 +40,7 @@ gem 'cloudinary' #cloud hosting
 # gem 'omniauth' # for facebook auth
 # gem 'omniauth-facebook', '1.4.0'
 # gem 'madmimi' # for mailing
+gem 'mail'
 gem 'instagram'
 gem 'httparty'
 
